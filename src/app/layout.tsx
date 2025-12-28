@@ -13,7 +13,7 @@ import EasterEggs from '@/components/EasterEggs';
 
 export const metadata: Metadata = {
   title: 'Elijah Winter | Enterprise-Grade Security Engineering for Growing Companies',
-  description: 'Former Amazon & CIA security leader. Security audits, IAM architecture, AI/ML security, and incident response for startups and mid-market companies. Starting at $5,000.',
+  description: 'Former Amazon & CIA security leader. Security audits, IAM architecture, AI/ML security, incident response, and fractional CISO services for startups and mid-market companies. Services from $500 to $60,000+.',
   keywords: ['security consultant', 'security engineer', 'Amazon security', 'CIA security', 'AI security', 'IAM architecture', 'incident response', 'SOC 2 compliance', 'security audit', 'cybersecurity consultant', 'enterprise security', 'startup security'],
   authors: [{ name: 'Elijah Winter' }],
   openGraph: {

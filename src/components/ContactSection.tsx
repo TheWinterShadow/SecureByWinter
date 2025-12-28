@@ -236,12 +236,12 @@ export default function ContactSection() {
                 >
                   <option value="">Select budget range...</option>
                   <option value="Under $1,000 (advisory/mentorship only)">Under $1,000 (advisory/mentorship only)</option>
-                  <option value="$1,000 - $5,000 (rapid reviews)">$1,000 - $5,000 (rapid reviews)</option>
-                  <option value="$5,000 - $15,000 (smaller projects)">$5,000 - $15,000 (smaller projects)</option>
-                  <option value="$15,000 - $30,000 (standard projects)">$15,000 - $30,000 (standard projects)</option>
-                  <option value="$30,000 - $50,000 (comprehensive projects)">$30,000 - $50,000 (comprehensive projects)</option>
-                  <option value="$50,000+ (enterprise engagements)">$50,000+ (enterprise engagements)</option>
-                  <option value="Monthly retainer ($3.5K - $12K/month)">Monthly retainer ($3.5K - $12K/month)</option>
+                  <option value="$1,000 - $5,000 (rapid reviews, code reviews)">$1,000 - $5,000 (rapid reviews, code reviews)</option>
+                  <option value="$5,000 - $15,000 (smaller projects, architecture consulting)">$5,000 - $15,000 (smaller projects, architecture consulting)</option>
+                  <option value="$15,000 - $35,000 (standard projects)">$15,000 - $35,000 (standard projects)</option>
+                  <option value="$35,000 - $60,000 (comprehensive projects)">$35,000 - $60,000 (comprehensive projects)</option>
+                  <option value="$60,000+ (enterprise engagements)">$60,000+ (enterprise engagements)</option>
+                  <option value="Monthly retainer ($1.5K - $18K/month)">Monthly retainer ($1.5K - $18K/month)</option>
                   <option value="Not sure yet">Not sure yet</option>
                 </select>
               </div>

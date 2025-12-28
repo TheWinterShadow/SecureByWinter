@@ -102,12 +102,12 @@ export default function Home() {
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { icon: Shield, emoji: '🔒', title: 'Security Audits & Compliance', desc: 'Comprehensive security assessments for due diligence, SOC 2, or internal reviews. Get a clear roadmap with prioritized fixes.', price: 'Starting at $12,000' },
-                { icon: Lock, emoji: '🔐', title: 'IAM & Access Control', desc: 'Design and implement scalable authorization systems. From RBAC to fine-grained permissions, done right the first time.', price: 'Starting at $15,000' },
-                { icon: Settings, emoji: '⚙️', title: 'Security Automation', desc: 'Stop doing manual security reviews. Automated vulnerability scanning, CI/CD security, and continuous monitoring.', price: 'Starting at $18,000' },
-                { icon: AlertTriangle, emoji: '🚨', title: 'Incident Response', desc: 'Fast response to security incidents. Investigation, containment, remediation, and post-mortem to prevent recurrence.', price: 'Starting at $5,000' },
-                { icon: Bot, emoji: '🤖', title: 'AI/ML Security', desc: 'Specialized security for AI-powered products. Model security, prompt injection protection, and compliance frameworks.', price: 'Starting at $20,000' },
-                { icon: RefreshCw, emoji: '🔄', title: 'Security Retainer', desc: 'Ongoing security support without hiring full-time. Priority access, regular reviews, and flexible monthly hours.', price: 'Starting at $3,500/month' },
+                { icon: Shield, emoji: '🔒', title: 'Security Audits & Compliance', desc: 'Comprehensive security assessments for due diligence, SOC 2, or internal reviews. Get a clear roadmap with prioritized fixes.', price: '$12,000 - $35,000' },
+                { icon: Lock, emoji: '🔐', title: 'IAM & Access Control', desc: 'Design and implement scalable authorization systems. From RBAC to fine-grained permissions, done right the first time.', price: '$14,000 - $45,000' },
+                { icon: Settings, emoji: '⚙️', title: 'Security Automation', desc: 'Stop doing manual security reviews. Automated vulnerability scanning, CI/CD security, and continuous monitoring.', price: '$15,000 - $55,000' },
+                { icon: AlertTriangle, emoji: '🚨', title: 'Incident Response', desc: 'Fast response to security incidents. Investigation, containment, remediation, and post-mortem to prevent recurrence.', price: '$6,000 - $18,000' },
+                { icon: Bot, emoji: '🤖', title: 'AI/ML Security', desc: 'Specialized security for AI-powered products. Model security, prompt injection protection, and compliance frameworks.', price: '$18,000 - $60,000' },
+                { icon: RefreshCw, emoji: '🔄', title: 'Security Retainer', desc: 'Ongoing security support without hiring full-time. Priority access, regular reviews, and flexible monthly hours.', price: '$4,500 - $13,500/month' },
               ].map((service, index) => {
                 const Icon = service.icon;
                 return (

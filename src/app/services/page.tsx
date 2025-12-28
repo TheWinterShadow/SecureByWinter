@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Shield, Lock, Settings, AlertTriangle, Bot, RefreshCw, CheckCircle, ArrowRight, HelpCircle, Lightbulb, GraduationCap, Search } from 'lucide-react';
+import { Shield, Lock, Settings, AlertTriangle, Bot, RefreshCw, CheckCircle, ArrowRight, HelpCircle, Lightbulb, GraduationCap, Search, Code, Building2, Users, Briefcase, Phone } from 'lucide-react';
 
 // Consultation & Advisory Services (shown first)
 const consultationServices = [
@@ -56,8 +56,8 @@ const consultationServices = [
       'Career progression in security engineering',
     ],
     timeline: 'Ongoing',
-    investment: '$800/month',
-    investmentNote: '(3-month minimum commitment) | Individual sessions: $500/hour (if not doing monthly package)',
+    investment: '$150 - $300/month',
+    investmentNote: '(Subscription) OR $95 - $150/hour (individual sessions) | Tiers: Starter ($150/mo, 2hrs), Professional ($225/mo, 4hrs), Executive ($300/mo, 6hrs)',
     cta: 'Start Mentorship',
   },
   {
@@ -118,7 +118,7 @@ const servicePackages = [
       'Gave technical teams clear direction on what to fix first',
     ],
     timeline: '2-4 weeks',
-    investment: '$12,000 - $25,000',
+    investment: '$12,000 - $35,000',
     investmentNote: '(Varies based on infrastructure size and compliance requirements) | Includes: Comprehensive assessment, all documentation, and 2 weeks post-delivery support',
     cta: 'Request Security Audit',
   },
@@ -152,7 +152,7 @@ const servicePackages = [
     ],
     impactNote: 'At Amazon, I partnered with 50+ development teams implementing ABAC and FGAC models',
     timeline: '3-5 weeks',
-    investment: '$15,000 - $30,000',
+    investment: '$14,000 - $45,000',
     investmentNote: '(Depends on system complexity and integration requirements) | Includes: Full architecture, reference code, implementation support, and 30 days post-launch support',
     cta: 'Discuss IAM Project',
   },
@@ -188,7 +188,7 @@ const servicePackages = [
     ],
     impactNote: 'From my work at Amazon automating security processes',
     timeline: '4-6 weeks',
-    investment: '$18,000 - $35,000',
+    investment: '$15,000 - $55,000',
     investmentNote: '(Based on scope of automation and infrastructure complexity) | Includes: All tooling, implementation, training, and 60-day refinement period',
     cta: 'Automate Your Security',
   },
@@ -229,7 +229,7 @@ const servicePackages = [
     ],
     experienceNote: 'At Amazon and CIA',
     timeline: 'Immediate response - 2 weeks (incident-dependent)',
-    investment: 'Emergency Response: $5,000 - $15,000 (incident-dependent) | Incident Response Planning: $6,000 - $10,000 | Emergency Retainer: $2,500/month (priority access, 4-hour SLA)',
+    investment: 'Emergency Response: $6,000 - $18,000 (incident-dependent) | Incident Response Planning: $4,500 - $8,000 | Emergency Retainer: $1,500/month (priority access, 4-hour SLA)',
     investmentNote: 'Available 24/7 for critical incidents',
     cta: 'Emergency Contact',
     ctaSecondary: 'Plan Ahead - Retainer Info',
@@ -267,7 +267,7 @@ const servicePackages = [
     ],
     expertiseNote: 'At Amazon',
     timeline: '3-5 weeks',
-    investment: '$20,000 - $40,000',
+    investment: '$18,000 - $60,000',
     investmentNote: '(Based on number of models, data sensitivity, and compliance requirements) | Includes: Full assessment, framework implementation, and 3 weeks support',
     cta: 'Secure Your AI Systems',
   },
@@ -305,24 +305,24 @@ const servicePackages = [
     retainerOptions: [
       {
         name: 'Starter Plan',
-        price: '$3,500/month',
-        hours: '15 hours per month',
+        price: '$4,500/month',
+        hours: '30 hours per month',
         sla: '8-hour SLA for urgent issues',
         calls: 'Monthly check-in call',
         reporting: 'Perfect for early-stage startups',
       },
       {
         name: 'Standard Plan',
-        price: '$7,000/month',
-        hours: '30 hours per month',
+        price: '$9,000/month',
+        hours: '60 hours per month',
         sla: '4-hour SLA for urgent issues',
         calls: 'Bi-weekly strategy calls',
         reporting: 'Quarterly security reporting',
       },
       {
         name: 'Premium Plan',
-        price: '$12,000/month',
-        hours: '50 hours per month',
+        price: '$13,500/month',
+        hours: '90 hours per month',
         sla: '2-hour SLA for urgent issues',
         calls: 'Weekly strategy calls',
         reporting: 'Quarterly reporting + annual security roadmap',
@@ -330,6 +330,189 @@ const servicePackages = [
     ],
     retainerNote: 'All retainers include direct Slack/email access and rollover of up to 5 unused hours per month.',
     cta: 'Discuss Retainer Options',
+  },
+  {
+    icon: Code,
+    emoji: '📝',
+    title: 'Security Code Review Service',
+    whoFor: 'Companies needing focused security review of critical code before deployment, third-party integrations, or high-risk features. Get expert eyes on specific code sections without a full audit.',
+    includes: [
+      'Deep-dive review of specified code sections',
+      'Detailed vulnerability report with severity ratings',
+      'Remediation recommendations with code examples',
+      '2-week re-review after fixes implemented',
+      'Developer Q&A session',
+    ],
+    deliverables: [
+      'Security findings report with severity classifications',
+      'Code-level remediation guidance',
+      'Best practices recommendations',
+      'Re-review validation report',
+    ],
+    results: [
+      'Identified critical vulnerabilities before production deployment',
+      'Prevented security issues in high-risk integrations',
+      'Improved code security posture with actionable feedback',
+    ],
+    timeline: '1-2 weeks (depending on codebase size)',
+    investment: '$2,000 - $9,000',
+    investmentNote: 'Small Review: $2,000 (up to 5,000 LOC) | Medium Review: $5,000 (up to 15,000 LOC) | Large Review: $9,000 (up to 40,000 LOC)',
+    cta: 'Request Code Review',
+  },
+  {
+    icon: Building2,
+    emoji: '🏗️',
+    title: 'Security Architecture Consulting',
+    whoFor: 'Startups building MVP with security from day one, companies scaling beyond initial architecture, or businesses preparing for compliance audits. Get Amazon-proven frameworks adapted to your business.',
+    includes: [
+      'Pre-session assessment questionnaire',
+      '1-3 days intensive sessions (on-site or virtual)',
+      'Custom security architecture diagram',
+      'Threat modeling for your specific use case',
+      'Implementation roadmap with prioritized phases',
+      '30-day follow-up support',
+    ],
+    deliverables: [
+      'Security architecture document with diagrams',
+      'Threat model specific to your system',
+      'Prioritized implementation roadmap',
+      'Security framework recommendations',
+      'Compliance alignment strategy (if applicable)',
+    ],
+    results: [
+      'Built security foundation before scaling issues arise',
+      'Passed compliance audits with architecture already in place',
+      'Enabled faster development with clear security patterns',
+    ],
+    timeline: '1-3 days (intensive sessions)',
+    investment: '$4,000 - $11,000',
+    investmentNote: 'Strategy Session: $4,000 (1 day, virtual) | Deep Dive: $7,500 (2 days, comprehensive) | Enterprise Package: $11,000 (3 days, on-site)',
+    cta: 'Schedule Architecture Session',
+  },
+  {
+    icon: Users,
+    emoji: '👥',
+    title: 'Security Training & Workshops',
+    whoFor: 'Development teams needing security education, companies preparing for compliance, or organizations building security culture. Move from reactive to proactive security with hands-on training.',
+    includes: [
+      'Custom content tailored to your tech stack',
+      '4-8 hour interactive workshop (virtual or on-site)',
+      'Hands-on exercises and real-world scenarios',
+      'Workshop materials and reference guides',
+      '30-day Q&A support after training',
+      'Certificate of completion for participants',
+    ],
+    workshopTopics: [
+      'Secure Coding Fundamentals (OWASP Top 10)',
+      'IAM & Access Control Best Practices',
+      'API Security & Authentication',
+      'Cloud Security (AWS/GCP/Azure)',
+      'Incident Response Tabletop Exercises',
+      'Security for AI/ML Systems',
+    ],
+    deliverables: [
+      'Custom training materials and slides',
+      'Hands-on lab exercises',
+      'Reference documentation',
+      'Post-training assessment',
+    ],
+    results: [
+      'Reduced security vulnerabilities in code reviews',
+      'Improved team security awareness and practices',
+      'Built security champions within development teams',
+    ],
+    timeline: '4-8 hours (half-day to full-day)',
+    investment: '$2,500 - $6,000',
+    investmentNote: 'Half-Day Workshop: $2,500 (4 hours, up to 15 participants) | Full-Day Workshop: $4,500 (8 hours, up to 20 participants) | Multi-Day Program: $6,000+ (custom, 2-3 days)',
+    cta: 'Schedule Training',
+  },
+  {
+    icon: Briefcase,
+    emoji: '💼',
+    title: 'Fractional CISO Services',
+    whoFor: 'Series A/B companies needing security leadership, businesses pursuing compliance certifications, or organizations scaling security programs. Get part-time Chief Information Security Officer expertise without full-time salary.',
+    includes: [
+      '20-80 hours per month of senior security leadership',
+      'Security program development and oversight',
+      'Vendor security assessments',
+      'Board-level security reporting',
+      'Compliance roadmap and audit support',
+      'Security policy and procedure documentation',
+      'Incident response leadership',
+      'Strategic planning and budgeting',
+    ],
+    deliverables: [
+      'Security program strategy and roadmap',
+      'Board-ready security reports',
+      'Compliance documentation and policies',
+      'Vendor assessment reports',
+      'Quarterly security posture assessments',
+    ],
+    results: [
+      'Achieved compliance certifications (SOC 2, ISO 27001, HIPAA)',
+      'Built security programs from scratch',
+      'Passed investor due diligence security reviews',
+      'Reduced security incidents through proactive leadership',
+    ],
+    retainerOptions: [
+      {
+        name: 'Advisor Tier',
+        price: '$6,500/month',
+        hours: '20 hours per month',
+        sla: 'Strategic guidance and oversight',
+        calls: 'Bi-weekly strategy calls',
+        reporting: 'Quarterly board reports',
+      },
+      {
+        name: 'Strategic Tier',
+        price: '$11,000/month',
+        hours: '40 hours per month',
+        sla: 'Program oversight and execution',
+        calls: 'Weekly strategy calls',
+        reporting: 'Monthly reports + quarterly board updates',
+      },
+      {
+        name: 'Embedded Tier',
+        price: '$18,000/month',
+        hours: '80 hours per month',
+        sla: 'Hands-on leadership and execution',
+        calls: 'Multiple weekly touchpoints',
+        reporting: 'Weekly reports + monthly board updates',
+      },
+    ],
+    timeline: '6-12 month minimum engagement',
+    investment: '$6,500 - $18,000/month',
+    investmentNote: '(6-12 month minimum) | Includes: Security leadership, program development, compliance support, and board reporting',
+    cta: 'Discuss Fractional CISO',
+  },
+  {
+    icon: Phone,
+    emoji: '📞',
+    title: 'Emergency Security Hotline',
+    whoFor: 'High-availability SaaS platforms, healthcare and financial services companies, businesses handling sensitive customer data, or organizations with regulatory response requirements. Get 24/7 access to incident response expertise.',
+    includes: [
+      'Dedicated emergency phone number',
+      '2-hour response SLA for critical incidents',
+      'Unlimited non-emergency security consultations',
+      'Monthly security check-in call',
+      'Access to incident response playbooks',
+      'Post-incident analysis and reporting',
+    ],
+    deliverables: [
+      'Incident response documentation',
+      'Post-incident analysis reports',
+      'Updated response playbooks',
+      'Security recommendations from incidents',
+    ],
+    results: [
+      'Reduced incident response time by 60%',
+      'Contained security incidents before major impact',
+      'Improved incident response processes through expert guidance',
+    ],
+    timeline: '24/7 availability',
+    investment: '$1,500/month retainer + $190/hour incident response',
+    investmentNote: 'Monthly Retainer: $1,500 (reserves your spot, includes consultations) | Incident Response: $190/hour (only when activated) | Average Total: $2,000-3,500/month',
+    cta: 'Set Up Hotline',
   },
 ];
 
@@ -395,8 +578,11 @@ export default function ServicesPage() {
           <p className="text-[var(--theme-text-secondary)] max-w-4xl mx-auto mb-4">
             I offer specialized security services designed for startups and mid-market companies that need more than basic security but aren&apos;t ready to hire a full security team. All services include documentation, knowledge transfer, and a support period after delivery.
           </p>
-          <p className="text-[var(--theme-text-secondary)] max-w-4xl mx-auto">
+          <p className="text-[var(--theme-text-secondary)] max-w-4xl mx-auto mb-4">
             I offer services at multiple price points because I remember what it was like starting out. Sometimes you just need an hour of expert advice ($500 advisory session). Sometimes you need a quick security check before a big demo ($2,500 rapid review). And sometimes you need comprehensive security engineering ($15K+ full projects). Start where it makes sense for your stage and budget. Many clients begin with advisory sessions, then move to larger projects once we&apos;ve built trust and they see the value.
+          </p>
+          <p className="text-sm text-[var(--theme-text-secondary)] max-w-4xl mx-auto italic">
+            * All prices shown are estimates and can be customized based on the specific scope and amount of work requested. Final pricing will be provided after discussing your unique requirements.
           </p>
         </motion.div>
 
@@ -557,6 +743,9 @@ export default function ServicesPage() {
                               {service.investmentNote}
                             </p>
                           )}
+                          <p className="text-xs text-[var(--theme-text-secondary)] italic mt-2">
+                            * Price is an estimate and can be customized based on scope
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -642,6 +831,21 @@ export default function ServicesPage() {
                         </>
                       )}
                     </ul>
+                    {(pkg as any).workshopTopics && (
+                      <>
+                        <h3 className="text-lg font-semibold text-[var(--theme-text)] mb-3">
+                          WORKSHOP TOPICS:
+                        </h3>
+                        <ul className="space-y-2 mb-6">
+                          {(pkg as any).workshopTopics.map((item: string, idx: number) => (
+                            <li key={idx} className="flex items-start gap-2">
+                              <ArrowRight size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
+                              <span className="text-[var(--theme-text-secondary)]">{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    )}
                   </div>
 
                   <div>
@@ -804,6 +1008,9 @@ export default function ServicesPage() {
                             Includes: All assessment work, documentation, and 2 weeks post-delivery support
                           </p>
                         )}
+                        <p className="text-xs text-[var(--theme-text-secondary)] italic mt-2">
+                          * Price is an estimate and can be customized based on scope
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -860,14 +1067,19 @@ export default function ServicesPage() {
                 <tbody>
                   {[
                     { situation: '"I need quick advice on a specific security decision"', service: 'Security Advisory Session', investment: '$500', timeline: '1 session' },
-                    { situation: '"I want to learn security engineering from an expert"', service: 'Technical Mentorship', investment: '$800/month', timeline: 'Ongoing' },
+                    { situation: '"I want to learn security engineering from an expert"', service: 'Technical Security Mentorship', investment: '$150-$300/mo', timeline: 'Ongoing' },
                     { situation: '"We need basic security feedback before launching"', service: 'Rapid Security Review', investment: '$2,500', timeline: '1 week' },
-                    { situation: '"We\'re preparing for investor due diligence"', service: 'Security Audit & Compliance', investment: '$12K-$25K', timeline: '2-4 weeks' },
-                    { situation: '"Our permissions system is becoming unmaintainable"', service: 'IAM Architecture', investment: '$15K-$30K', timeline: '3-5 weeks' },
-                    { situation: '"We waste too much time on manual security work"', service: 'Security Automation', investment: '$18K-$35K', timeline: '4-6 weeks' },
-                    { situation: '"We\'re building AI-powered features"', service: 'AI/ML Security', investment: '$20K-$40K', timeline: '3-5 weeks' },
-                    { situation: '"We suspect a security breach"', service: 'Incident Response', investment: '$5K-$15K', timeline: 'Immediate' },
-                    { situation: '"We need ongoing security support"', service: 'Security Retainer', investment: '$3.5K-$12K/mo', timeline: 'Monthly' },
+                    { situation: '"We need security review of specific code before deployment"', service: 'Security Code Review', investment: '$2K-$9K', timeline: '1-2 weeks' },
+                    { situation: '"We\'re preparing for investor due diligence"', service: 'Security Audit & Compliance', investment: '$12K-$35K', timeline: '2-4 weeks' },
+                    { situation: '"We need security architecture designed from scratch"', service: 'Security Architecture Consulting', investment: '$4K-$11K', timeline: '1-3 days' },
+                    { situation: '"Our permissions system is becoming unmaintainable"', service: 'IAM & Access Control', investment: '$14K-$45K', timeline: '3-5 weeks' },
+                    { situation: '"We waste too much time on manual security work"', service: 'Security Automation', investment: '$15K-$55K', timeline: '4-6 weeks' },
+                    { situation: '"We\'re building AI-powered features"', service: 'AI/ML Security', investment: '$18K-$60K', timeline: '3-5 weeks' },
+                    { situation: '"We suspect a security breach"', service: 'Incident Response', investment: '$6K-$18K', timeline: 'Immediate' },
+                    { situation: '"We need security training for our development team"', service: 'Security Training & Workshops', investment: '$2.5K-$6K', timeline: '4-8 hours' },
+                    { situation: '"We need ongoing security support"', service: 'Security Retainer', investment: '$4.5K-$13.5K/mo', timeline: 'Monthly' },
+                    { situation: '"We need part-time security leadership"', service: 'Fractional CISO', investment: '$6.5K-$18K/mo', timeline: '6-12 months' },
+                    { situation: '"We need 24/7 emergency security access"', service: 'Emergency Security Hotline', investment: '$1.5K/mo + $190/hr', timeline: '24/7' },
                   ].map((row, idx) => (
                     <tr key={idx} className={idx % 2 === 0 ? 'bg-[var(--theme-surface)]' : 'bg-[var(--theme-bg)]'}>
                       <td className="px-6 py-4 text-sm text-[var(--theme-text-secondary)] border-b border-[var(--theme-border)]">{row.situation}</td>
