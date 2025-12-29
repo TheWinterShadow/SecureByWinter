@@ -46,7 +46,8 @@ export default function ContactSection() {
         name: formData.name,
         email: formData.email,
         title: `New Contact Form Submission from ${formData.name}`,
-        message: `You have a new contact form submission:Name: ${formData.name}
+        message: `You have a new contact form submission:
+Name: ${formData.name}
 Email: ${formData.email}
 Company: ${formData.company}
 Project Type: ${formData.projectType}
