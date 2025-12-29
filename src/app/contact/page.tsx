@@ -25,7 +25,7 @@ export default function ContactPage() {
             Let&apos;s Talk About Your Security
           </h1>
           <p className="text-lg text-[var(--theme-text-secondary)] max-w-2xl mx-auto">
-            No sales pitch. No pressure. Just 20 minutes to understand your challenges and see if I can help.
+            No sales pitch. No pressure. All initial 30-minute consultations are always free. Let&apos;s understand your challenges and see if I can help.
           </p>
         </motion.div>
 
@@ -39,13 +39,12 @@ export default function ContactPage() {
           <h2 className="text-2xl font-semibold text-[var(--theme-text)] mb-6 text-center">
             Choose Your Conversation Type
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
             {[
-              { emoji: '🔒', label: 'Security Audit Discussion', desc: 'You need a security review for investors, customers, or compliance requirements' },
-              { emoji: '🤖', label: 'AI Security Inquiry', desc: 'You\'re building AI/ML features and want to understand security risks' },
-              { emoji: '🔐', label: 'IAM / Access Control Help', desc: 'Your permission system is getting complex and you need architecture help' },
-              { emoji: '🚨', label: 'Incident Response (Urgent)', desc: 'You suspect or confirmed a security issue — I respond within 24 hours' },
-              { emoji: '💬', label: 'General Security Question', desc: 'You\'re not sure exactly what you need yet — let\'s explore together' },
+              { emoji: '💻', label: 'Programming Services', desc: 'Web apps, backends, system design, CI/CD, analytics, automation, data lakes, cloud migration' },
+              { emoji: '🎓', label: 'Mentorship', desc: 'One-on-one mentorship in programming, security, career development, or technical leadership' },
+              { emoji: '💡', label: 'Technical Consultation', desc: 'Expert technical advice, architecture reviews, or strategic guidance for your decisions' },
+              { emoji: '🔒', label: 'Security Work', desc: 'Secure design reviews, code reviews, threat modeling, incident response, compliance, vulnerability analysis' },
             ].map((option, index) => (
               <Link
                 key={index}
@@ -79,7 +78,7 @@ export default function ContactPage() {
               {[
                 { step: '1', title: 'You Reach Out', desc: 'Fill out the form or email me directly' },
                 { step: '2', title: 'I Respond', desc: 'Within 24 hours to schedule a call' },
-                { step: '3', title: 'Discovery Call', desc: '20-minute free conversation (no obligation)' },
+                { step: '3', title: 'Discovery Call', desc: '30-minute free consultation (no obligation)' },
                 { step: '4', title: 'Proposal', desc: 'Detailed proposal within 2-3 days if it\'s a fit' },
               ].map((item, index) => (
                 <motion.div
@@ -156,7 +155,7 @@ export default function ContactPage() {
             <div className="space-y-3">
               {[
                 { text: 'Read My Case Studies', href: '/projects', desc: 'See detailed examples of security projects I\'ve completed and the results achieved.' },
-                { text: 'View Service Packages', href: '/services', desc: 'Review my service offerings and pricing to get a sense of investment levels.' },
+                { text: 'View All Services', href: '/services', desc: 'Review all service offerings organized by category: Programming, Mentorship, Consultation, and Security.' },
                 { text: 'Download My Resume', href: 'https://www.elijahwinter.com', external: true, desc: 'Get the full background on my experience at Amazon and CIA.' },
                 { text: 'Follow on LinkedIn', href: 'https://www.linkedin.com/in/elijah-winter', external: true, desc: 'I share security insights, tips, and industry thoughts regularly.' },
                 { text: 'Check Out My GitHub', href: 'https://github.com/TheWinterShadow', external: true, desc: 'See code examples and open-source security tools I\'ve contributed to.' },
@@ -217,8 +216,8 @@ export default function ContactPage() {
                   a: 'I\'ll tell you honestly. If I\'m not the right person, I\'ll try to point you toward someone who is.',
                 },
                 {
-                  q: 'Do you have a minimum project size?',
-                  a: 'Most projects start around $5,000. For smaller needs, I offer hourly consulting or can recommend other resources.',
+                  q: 'How is pricing determined?',
+                  a: 'Pricing is based on the scope and amount of work requested and is negotiable. All initial 30-minute consultations are always free to discuss your needs.',
                 },
               ].map((faq, index) => (
                 <div key={index} className="border-b border-[var(--theme-border)] pb-4 last:border-0 last:pb-0">
@@ -245,7 +244,7 @@ export default function ContactPage() {
             Ready to Get Started?
           </h2>
           <p className="text-lg text-[var(--theme-text-secondary)] mb-8">
-            The first conversation is always free. Let&apos;s talk about your security challenges and see if I can help.
+            All initial 30-minute consultations are always free. Let&apos;s talk about your technical challenges and see if I can help.
           </p>
           <Link href="#contact">
             <motion.button

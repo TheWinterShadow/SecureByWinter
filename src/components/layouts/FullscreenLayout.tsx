@@ -28,7 +28,7 @@ export default function FullscreenLayout() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [sections.length]);
 
   return (
     <main className="min-h-screen" style={{ backgroundColor: 'var(--theme-bg)' }}>

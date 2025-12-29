@@ -1,522 +1,639 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Shield, Lock, Settings, AlertTriangle, Bot, RefreshCw, CheckCircle, ArrowRight, HelpCircle, Lightbulb, GraduationCap, Search, Code, Building2, Users, Briefcase, Phone } from 'lucide-react';
+import { Shield, Lock, Settings, AlertTriangle, Bot, RefreshCw, CheckCircle, ArrowRight, HelpCircle, Lightbulb, GraduationCap, Search, Code, Building2, Users, Briefcase, Phone, Terminal, MessageSquare, Database, Cloud, GitBranch, BarChart, Zap, FileCode, Server, Layout, ChevronDown, ChevronUp, Menu } from 'lucide-react';
 
-// Consultation & Advisory Services (shown first)
-const consultationServices = [
+// Service Categories
+const serviceCategories = [
   {
-    icon: Lightbulb,
-    emoji: '💡',
-    title: 'Security Advisory Session',
-    whoFor: 'Technical leaders who need expert guidance on a specific security decision, architecture review, or want a second opinion before committing to a larger initiative.',
-    sessionTypes: [
-      'Architecture review for a specific feature or system',
-      'Threat modeling workshop for new product',
-      'Security tool evaluation and selection advice',
-      'Compliance readiness assessment (high-level)',
-      'Career mentorship for security engineers',
-      '"Am I secure enough?" reality check',
-      'Vendor security assessment review',
-      'Incident response planning discussion',
+    id: 'programming',
+    title: 'Programming',
+    icon: Terminal,
+    emoji: '💻',
+    description: 'Full-stack development, system design, DevOps, analytics, and automation services.',
+    services: [
+      {
+        icon: Code,
+        emoji: '🌐',
+        title: 'Web Application Development',
+        description: 'Building full-stack web applications from scratch or enhancing existing ones. Frontend, backend, and full-stack development.',
+        includes: [
+          'Frontend development (React, Next.js, Vue, etc.)',
+          'Backend API development (REST, GraphQL)',
+          'Full-stack application architecture',
+          'Database integration and optimization',
+          'Authentication and authorization implementation',
+          'Deployment and hosting setup',
+        ],
+      },
+      {
+        icon: Server,
+        emoji: '⚙️',
+        title: 'Backend Development',
+        description: 'Building scalable backend systems, APIs, microservices, and server infrastructure.',
+        includes: [
+          'API design and development',
+          'Microservices architecture',
+          'Database design and optimization',
+          'Message queue and event streaming',
+          'Caching strategies',
+          'Performance optimization',
+        ],
+      },
+      {
+        icon: Layout,
+        emoji: '🏗️',
+        title: 'System Design',
+        description: 'Designing scalable, reliable systems. Architecture planning for distributed systems, microservices, and cloud-native applications.',
+        includes: [
+          'System architecture design',
+          'Scalability and performance planning',
+          'Technology stack selection',
+          'Database and storage design',
+          'API design and integration patterns',
+          'Documentation and diagrams',
+        ],
+      },
+      {
+        icon: GitBranch,
+        emoji: '🔄',
+        title: 'CI/CD & DevOps Setup',
+        description: 'Building continuous integration and deployment pipelines. Infrastructure as code, automation, and DevOps best practices.',
+        includes: [
+          'CI/CD pipeline setup (GitHub Actions, GitLab CI, Jenkins)',
+          'Infrastructure as Code (Terraform, CloudFormation)',
+          'Container orchestration (Docker, Kubernetes)',
+          'Automated testing integration',
+          'Deployment automation',
+          'Monitoring and logging setup',
+        ],
+      },
+      {
+        icon: BarChart,
+        emoji: '📊',
+        title: 'Analytics Platform Development',
+        description: 'Building analytics platforms, dashboards, and data visualization systems.',
+        includes: [
+          'Analytics dashboard development',
+          'Data pipeline architecture',
+          'Real-time analytics setup',
+          'Data visualization and reporting',
+          'Metrics and KPI tracking',
+          'Custom analytics solutions',
+        ],
+      },
+      {
+        icon: BarChart,
+        emoji: '📈',
+        title: 'Analytics & Data Analysis',
+        description: 'Performing data analysis, building reports, and extracting insights from your data.',
+        includes: [
+          'Data analysis and insights',
+          'Custom reporting and dashboards',
+          'Statistical analysis',
+          'Business intelligence solutions',
+          'Data-driven recommendations',
+        ],
+      },
+      {
+        icon: Database,
+        emoji: '🔄',
+        title: 'Data ETL (Extract, Transform, Load)',
+        description: 'Building data pipelines to extract, transform, and load data from various sources.',
+        includes: [
+          'ETL pipeline development',
+          'Data integration from multiple sources',
+          'Data transformation and cleaning',
+          'Data warehouse setup',
+          'Batch and real-time processing',
+          'Data quality and validation',
+        ],
+      },
+      {
+        icon: Database,
+        emoji: '🏞️',
+        title: 'Data Lake Building',
+        description: 'Designing and building scalable data lakes for storing and processing large volumes of structured and unstructured data.',
+        includes: [
+          'Data lake architecture design',
+          'Cloud data lake setup (AWS S3, Azure Data Lake, GCP)',
+          'Data ingestion pipelines',
+          'Data catalog and metadata management',
+          'Data governance and access controls',
+          'Integration with analytics and ML tools',
+          'Cost optimization strategies',
+        ],
+      },
+      {
+        icon: Zap,
+        emoji: '⚡',
+        title: 'Automation (Security & Non-Security)',
+        description: 'Building automation solutions for security, operations, or business processes. Custom tooling and scripts.',
+        includes: [
+          'Security automation (vulnerability scanning, compliance checks)',
+          'Operational automation (deployments, monitoring)',
+          'Business process automation',
+          'Custom tooling and scripts',
+          'Workflow automation',
+          'Integration automation',
+        ],
+      },
+      {
+        icon: FileCode,
+        emoji: '🔬',
+        title: 'Technical Proof of Concepts (POCs)',
+        description: 'Building proof of concepts to validate technical approaches, new technologies, or architectural decisions.',
+        includes: [
+          'Rapid prototyping',
+          'Technology evaluation',
+          'Architecture validation',
+          'Feasibility studies',
+          'MVP development',
+          'Technical demonstrations',
+        ],
+      },
+      {
+        icon: Database,
+        emoji: '🗄️',
+        title: 'Database Management',
+        description: 'Database administration, optimization, monitoring, and maintenance.',
+        includes: [
+          'Database design and optimization',
+          'Query optimization',
+          'Performance tuning',
+          'Backup and recovery strategies',
+          'Database monitoring and alerting',
+          'Capacity planning',
+        ],
+      },
+      {
+        icon: Database,
+        emoji: '🚀',
+        title: 'Database Migration',
+        description: 'Migrating databases between systems, versions, or cloud providers with minimal downtime.',
+        includes: [
+          'Migration planning and strategy',
+          'Data migration scripts',
+          'Schema transformation',
+          'Zero-downtime migration execution',
+          'Data validation and testing',
+          'Rollback planning',
+        ],
+      },
+      {
+        icon: Cloud,
+        emoji: '☁️',
+        title: 'Cloud Migration & Planning',
+        description: 'Planning and executing cloud migrations. Moving to AWS, Azure, GCP, or multi-cloud architectures.',
+        includes: [
+          'Cloud strategy and planning',
+          'Migration roadmap development',
+          'Cloud architecture design',
+          'Cost optimization analysis',
+          'Migration execution support',
+          'Multi-cloud strategy',
+        ],
+      },
     ],
-    includes: [
-      '60-90 minute video call',
-      'Written summary of recommendations',
-      'Action items with priorities',
-      'Resource links and references',
-      '1 week of follow-up email support',
-    ],
-    timeline: '1 session',
-    investment: '$500 per session',
-    investmentNote: 'Perfect for: Quick decisions, second opinions, spot guidance',
-    cta: 'Book Advisory Session',
   },
   {
+    id: 'mentorship',
+    title: 'Mentorship',
     icon: GraduationCap,
     emoji: '🎓',
-    title: 'Security Engineering Mentorship',
-    whoFor: 'Junior to mid-level security engineers wanting to level up their skills, developers transitioning into security roles, or technical leaders building security expertise in their teams.',
-    includes: [
-      'Two 60-minute mentorship sessions per month',
-      'Code review and feedback on your security projects',
-      'Career guidance and skill development roadmap',
-      'Access to my security resources and templates',
-      'Async Slack/email support between sessions',
-      'Real-world problem-solving practice',
-      'Resume and interview preparation (if needed)',
+    description: 'One-on-one mentorship in programming, security, career development, and technical leadership.',
+    services: [
+      {
+        icon: GraduationCap,
+        emoji: '💻',
+        title: 'Programming Mentorship',
+        description: 'Learn software engineering, system design, and best practices from an experienced engineer.',
+        includes: [
+          'Code review and feedback',
+          'Architecture and design patterns',
+          'Best practices and coding standards',
+          'Performance optimization techniques',
+          'Technology stack guidance',
+          'Project portfolio development',
+        ],
+      },
+      {
+        icon: Shield,
+        emoji: '🔒',
+        title: 'Security Mentorship',
+        description: 'Level up your security engineering skills. Learn from 7+ years of Amazon and CIA experience.',
+        includes: [
+          'Application security and secure code review',
+          'Cloud security architecture (AWS focus)',
+          'IAM and access control patterns',
+          'Security automation and tooling',
+          'Incident response and forensics',
+          'Security career progression',
+        ],
+      },
+      {
+        icon: Briefcase,
+        emoji: '📈',
+        title: 'Career Mentorship',
+        description: 'Career guidance for engineers, security professionals, and technical leaders.',
+        includes: [
+          'Career path planning',
+          'Resume and portfolio review',
+          'Interview preparation (FAANG, startups)',
+          'Salary negotiation guidance',
+          'Technical leadership development',
+          'Skill development roadmap',
+        ],
+      },
+      {
+        icon: Users,
+        emoji: '👥',
+        title: 'Technical Leadership Mentorship',
+        description: 'Guidance for engineers transitioning into leadership roles or improving their leadership skills.',
+        includes: [
+          'Team management strategies',
+          'Technical decision-making',
+          'Architecture and system design leadership',
+          'Cross-functional collaboration',
+          'Engineering culture building',
+          'Stakeholder communication',
+        ],
+      },
     ],
-    topics: [
-      'Application security and secure code review',
-      'Cloud security architecture (AWS focus)',
-      'IAM and access control patterns',
-      'Security automation and tooling',
-      'Incident response and forensics',
-      'Career progression in security engineering',
-    ],
-    timeline: 'Ongoing',
-    investment: '$150 - $300/month',
-    investmentNote: '(Subscription) OR $95 - $150/hour (individual sessions) | Tiers: Starter ($150/mo, 2hrs), Professional ($225/mo, 4hrs), Executive ($300/mo, 6hrs)',
-    cta: 'Start Mentorship',
   },
   {
-    icon: Search,
-    emoji: '🔍',
-    title: 'Rapid Security Review (1 Week)',
-    whoFor: 'Startups that need quick security feedback before a demo day, product launch, or customer security questionnaire. Not a full audit, but faster and more affordable than comprehensive assessments.',
-    includes: [
-      'High-level architecture review',
-      'Automated vulnerability scanning',
-      'Common misconfiguration check',
-      'Critical risk identification only (no deep dive)',
-      '1-hour findings presentation',
-      'Short written report (5-10 pages max)',
-      'Quick-win recommendations list',
+    id: 'consultation',
+    title: 'General Technical Consultation',
+    icon: MessageSquare,
+    emoji: '💡',
+    description: 'Expert technical advice, architecture reviews, and strategic guidance for your technical decisions.',
+    services: [
+      {
+        icon: Lightbulb,
+        emoji: '💡',
+        title: 'Technical Advisory Sessions',
+        description: 'Get expert guidance on specific technical decisions, architecture reviews, or second opinions on technical approaches.',
+        includes: [
+          'Architecture review for features or systems',
+          'Technology stack evaluation',
+          'Technical decision support',
+          'Second opinions on technical approaches',
+          'Best practices consultation',
+          'Written summary and recommendations',
+        ],
+      },
+      {
+        icon: Building2,
+        emoji: '🏗️',
+        title: 'Architecture Consulting',
+        description: 'Strategic architecture design sessions. Get Amazon-proven frameworks adapted to your business.',
+        includes: [
+          'System architecture design',
+          'Threat modeling and security architecture',
+          'Scalability planning',
+          'Technology selection guidance',
+          'Implementation roadmap',
+          'Architecture documentation',
+        ],
+      },
+      {
+        icon: Search,
+        emoji: '🔍',
+        title: 'Technical Reviews',
+        description: 'Review of code, architecture, or technical decisions. Get expert feedback and recommendations.',
+        includes: [
+          'Code review and feedback',
+          'Architecture review',
+          'Technical design review',
+          'Performance analysis',
+          'Security review',
+          'Best practices recommendations',
+        ],
+      },
+      {
+        icon: Settings,
+        emoji: '⚙️',
+        title: 'Technology Evaluation',
+        description: 'Evaluate and select technologies, tools, or vendors for your technical needs.',
+        includes: [
+          'Technology stack evaluation',
+          'Tool and vendor assessment',
+          'Cost-benefit analysis',
+          'Proof of concept guidance',
+          'Migration feasibility studies',
+          'Recommendation reports',
+        ],
+      },
     ],
-    notIncluded: [
-      'Not a compliance audit',
-      'Not penetration testing',
-      'Not comprehensive threat modeling',
-      'Not suitable for regulated industries (HIPAA, finance)',
-    ],
-    perfectFor: 'Early-stage startups, pre-seed to Series A',
-    timeline: '1 week (5 business days)',
-    investment: '$2,500',
-    investmentNote: 'Includes: Assessment, report, and 1-hour presentation',
-    cta: 'Get Quick Review',
   },
-];
-
-const servicePackages = [
   {
+    id: 'security',
+    title: 'Security Work',
     icon: Shield,
     emoji: '🔒',
-    title: 'Security Audit & Compliance Preparation',
-    whoFor: 'Startups preparing for investor due diligence, companies pursuing SOC 2 or ISO 27001 certification, or any business that needs to understand their current security posture.',
-    includes: [
-      'Comprehensive security assessment across infrastructure, applications, and processes',
-      'Vulnerability identification and risk prioritization',
-      'Compliance gap analysis (SOC 2, GDPR, HIPAA considerations)',
-      'Threat modeling for your specific architecture',
-      'Executive summary for non-technical stakeholders',
-      'Detailed technical remediation roadmap',
-      'Security policy templates and documentation',
-      '2 weeks of implementation support',
-    ],
-    deliverables: [
-      'Executive security report (for board, investors, customers)',
-      'Technical findings document with proof-of-concepts',
-      'Prioritized remediation roadmap (quick wins → long-term improvements)',
-      'Security policies and procedures templates',
-      'Compliance checklist specific to your industry',
-    ],
-    results: [
-      'Identified 15-30 security issues before auditors/investors found them',
-      'Reduced audit preparation time by 40%',
-      'Achieved compliance certification on first attempt',
-      'Gave technical teams clear direction on what to fix first',
-    ],
-    timeline: '2-4 weeks',
-    investment: '$12,000 - $35,000',
-    investmentNote: '(Varies based on infrastructure size and compliance requirements) | Includes: Comprehensive assessment, all documentation, and 2 weeks post-delivery support',
-    cta: 'Request Security Audit',
-  },
-  {
-    icon: Lock,
-    emoji: '🔐',
-    title: 'Identity & Access Management (IAM) Architecture',
-    whoFor: 'SaaS companies scaling from 10 → 100+ users with complex permission requirements, businesses building multi-tenant systems, or teams struggling with unmaintainable authorization code.',
-    includes: [
-      'Current system assessment and pain point analysis',
-      'Authorization model design (RBAC, ABAC, or FGAC based on needs)',
-      'Zero-trust architecture planning',
-      'Policy-as-code implementation',
-      'OAuth 2.0 / SAML integration strategy',
-      'Database schema design for permissions',
-      'Developer documentation and best practices',
-      '30 days post-implementation support',
-    ],
-    deliverables: [
-      'IAM architecture document with diagrams',
-      'Authorization model specification',
-      'Reference implementation code',
-      'Database migration scripts (if applicable)',
-      'Developer guidelines and examples',
-      'Testing strategy and test cases',
-    ],
-    results: [
-      'Reduced unauthorized access incidents by 35%',
-      'Enabled teams to scale from dozens to thousands of users',
-      'Simplified permission management for complex enterprise requirements',
-    ],
-    impactNote: 'At Amazon, I partnered with 50+ development teams implementing ABAC and FGAC models',
-    timeline: '3-5 weeks',
-    investment: '$14,000 - $45,000',
-    investmentNote: '(Depends on system complexity and integration requirements) | Includes: Full architecture, reference code, implementation support, and 30 days post-launch support',
-    cta: 'Discuss IAM Project',
-  },
-  {
-    icon: Settings,
-    emoji: '⚙️',
-    title: 'Security Automation & Continuous Monitoring',
-    whoFor: 'Teams spending too much time on manual security reviews, companies wanting to shift left on security, or engineering organizations that need security integrated into CI/CD.',
-    includes: [
-      'Current security workflow assessment',
-      'Automated vulnerability scanning pipeline',
-      'CI/CD security integration (SAST, DAST, dependency scanning)',
-      'Custom security tooling development (Python/AWS)',
-      'Security metrics dashboard',
-      'Alert and notification automation',
-      'Runbook documentation',
-      'Team training on new tools',
-      '60 days of monitoring and refinement',
-    ],
-    deliverables: [
-      'Automated security scanning infrastructure',
-      'CI/CD pipeline security gates',
-      'Security metrics dashboard',
-      'Custom tooling (scripts, Lambda functions, automation)',
-      'Documentation and training materials',
-      'Alert configuration and response playbooks',
-    ],
-    results: [
-      'Reduced manual security assessments by 70%',
-      'Cut security review time from days to hours',
-      'Decreased false positives by 30% through intelligent filtering',
-      'Enabled security to scale without adding headcount',
-    ],
-    impactNote: 'From my work at Amazon automating security processes',
-    timeline: '4-6 weeks',
-    investment: '$15,000 - $55,000',
-    investmentNote: '(Based on scope of automation and infrastructure complexity) | Includes: All tooling, implementation, training, and 60-day refinement period',
-    cta: 'Automate Your Security',
-  },
-  {
-    icon: AlertTriangle,
-    emoji: '🚨',
-    title: 'Incident Response & Investigation',
-    whoFor: 'Companies that experienced or suspect a security breach, businesses needing incident response planning, or organizations wanting a security incident commander on call.',
-    includesReactive: [
-      'Immediate incident assessment and scoping',
-      'Containment strategy and execution',
-      'Digital forensics investigation',
-      'Evidence collection and preservation',
-      'Root cause analysis',
-      'Remediation implementation',
-      'Post-mortem documentation',
-      'Process improvements to prevent recurrence',
-    ],
-    includesProactive: [
-      'Incident response plan development',
-      'Playbook creation for common scenarios',
-      'Team training and tabletop exercises',
-      'On-call retainer arrangement',
-    ],
-    deliverables: [
-      'Incident timeline and attack vector analysis',
-      'Forensics report with evidence',
-      'Containment and remediation steps taken',
-      'Post-mortem report for stakeholders',
-      'Preventive measures roadmap',
-      'Updated security procedures',
-    ],
-    experience: [
-      'Investigated 200+ security incidents with 95% closure rate',
-      'Reduced incident response time by 66% through automation',
-      'Built investigation methodology and forensics frameworks',
-      'Experience with insider threats, data breaches, and compromise scenarios',
-    ],
-    experienceNote: 'At Amazon and CIA',
-    timeline: 'Immediate response - 2 weeks (incident-dependent)',
-    investment: 'Emergency Response: $6,000 - $18,000 (incident-dependent) | Incident Response Planning: $4,500 - $8,000 | Emergency Retainer: $1,500/month (priority access, 4-hour SLA)',
-    investmentNote: 'Available 24/7 for critical incidents',
-    cta: 'Emergency Contact',
-    ctaSecondary: 'Plan Ahead - Retainer Info',
-  },
-  {
-    icon: Bot,
-    emoji: '🤖',
-    title: 'AI & Machine Learning Security',
-    whoFor: 'Companies building AI-powered products, startups using LLMs in production, or businesses needing to secure machine learning pipelines and training data.',
-    includes: [
-      'AI/ML security assessment (models, APIs, training data)',
-      'Threat modeling for AI-specific attack vectors',
-      'Prompt injection and jailbreak testing',
-      'Model security framework implementation',
-      'Data privacy and governance review',
-      'Compliance considerations (AI regulations)',
-      'Security monitoring for AI systems',
-      'Developer guidelines for secure AI development',
-      '3 weeks of implementation support',
-    ],
-    deliverables: [
-      'AI security assessment report',
-      'Threat model specific to your AI architecture',
-      'Security framework adapted for AI workloads',
-      'Testing results (prompt injection, model extraction attempts)',
-      'Monitoring and alerting setup',
-      'AI security best practices documentation',
-    ],
-    expertise: [
-      'Co-founded AI Security Organization',
-      'Created AI security standards adopted by 500+ development teams',
-      'Secured 200+ AI models in production',
-      'Built automated security tooling reducing AI security reviews by 70%',
-      'Advised VPs and CISOs on AI security strategy',
-    ],
-    expertiseNote: 'At Amazon',
-    timeline: '3-5 weeks',
-    investment: '$18,000 - $60,000',
-    investmentNote: '(Based on number of models, data sensitivity, and compliance requirements) | Includes: Full assessment, framework implementation, and 3 weeks support',
-    cta: 'Secure Your AI Systems',
-  },
-  {
-    icon: RefreshCw,
-    emoji: '🔄',
-    title: 'Ongoing Security Retainer',
-    whoFor: 'Growing companies needing consistent security expertise without hiring full-time, businesses wanting priority access for emerging issues, or teams that benefit from monthly security reviews.',
-    includes: [
-      'Dedicated monthly hours (30 or 50 hour options)',
-      'Priority response time (4-hour SLA for urgent issues)',
-      'Flexible scope - mix of audits, development, consulting, incident response',
-      'Monthly security review and strategy call',
-      'Quarterly security posture reports',
-      'Direct Slack/email access',
-      'Proactive monitoring and recommendations',
-      'First priority for emergency issues',
-    ],
-    howItWorks: [
-      'Security reviews for new features',
-      'Compliance preparation work',
-      'IAM architecture refinement',
-      'Incident response when needed',
-      'Team training and knowledge transfer',
-      'Strategic security planning',
-    ],
-    benefits: [
-      '40% cost savings vs. hourly project work',
-      'Consistent security oversight as you scale',
-      'No sticker shock when emergencies arise',
-      'I become familiar with your systems over time',
-      'Faster responses because I know your context',
-      'Predictable monthly expense for budgeting',
-    ],
-    retainerOptions: [
+    description: 'Comprehensive security services including design reviews, code reviews, threat modeling, incident response, and compliance.',
+    services: [
       {
-        name: 'Starter Plan',
-        price: '$4,500/month',
-        hours: '30 hours per month',
-        sla: '8-hour SLA for urgent issues',
-        calls: 'Monthly check-in call',
-        reporting: 'Perfect for early-stage startups',
+        icon: Building2,
+        emoji: '🏗️',
+        title: 'Secure Design Review',
+        description: 'Review and improve the security architecture of your systems before implementation.',
+        includes: [
+          'Security architecture review',
+          'Threat modeling',
+          'Security design patterns',
+          'Attack surface analysis',
+          'Security control recommendations',
+          'Architecture security documentation',
+        ],
       },
       {
-        name: 'Standard Plan',
-        price: '$9,000/month',
-        hours: '60 hours per month',
-        sla: '4-hour SLA for urgent issues',
-        calls: 'Bi-weekly strategy calls',
-        reporting: 'Quarterly security reporting',
+        icon: Code,
+        emoji: '📝',
+        title: 'Secure Code Review',
+        description: 'Focused security review of your codebase. Identify vulnerabilities before deployment.',
+        includes: [
+          'Deep-dive review of specified code sections',
+          'Vulnerability identification and severity ratings',
+          'Remediation recommendations with code examples',
+          'Security best practices guidance',
+          'Re-review after fixes',
+          'Developer Q&A session',
+        ],
       },
       {
-        name: 'Premium Plan',
-        price: '$13,500/month',
-        hours: '90 hours per month',
-        sla: '2-hour SLA for urgent issues',
-        calls: 'Weekly strategy calls',
-        reporting: 'Quarterly reporting + annual security roadmap',
-      },
-    ],
-    retainerNote: 'All retainers include direct Slack/email access and rollover of up to 5 unused hours per month.',
-    cta: 'Discuss Retainer Options',
-  },
-  {
-    icon: Code,
-    emoji: '📝',
-    title: 'Security Code Review Service',
-    whoFor: 'Companies needing focused security review of critical code before deployment, third-party integrations, or high-risk features. Get expert eyes on specific code sections without a full audit.',
-    includes: [
-      'Deep-dive review of specified code sections',
-      'Detailed vulnerability report with severity ratings',
-      'Remediation recommendations with code examples',
-      '2-week re-review after fixes implemented',
-      'Developer Q&A session',
-    ],
-    deliverables: [
-      'Security findings report with severity classifications',
-      'Code-level remediation guidance',
-      'Best practices recommendations',
-      'Re-review validation report',
-    ],
-    results: [
-      'Identified critical vulnerabilities before production deployment',
-      'Prevented security issues in high-risk integrations',
-      'Improved code security posture with actionable feedback',
-    ],
-    timeline: '1-2 weeks (depending on codebase size)',
-    investment: '$2,000 - $9,000',
-    investmentNote: 'Small Review: $2,000 (up to 5,000 LOC) | Medium Review: $5,000 (up to 15,000 LOC) | Large Review: $9,000 (up to 40,000 LOC)',
-    cta: 'Request Code Review',
-  },
-  {
-    icon: Building2,
-    emoji: '🏗️',
-    title: 'Security Architecture Consulting',
-    whoFor: 'Startups building MVP with security from day one, companies scaling beyond initial architecture, or businesses preparing for compliance audits. Get Amazon-proven frameworks adapted to your business.',
-    includes: [
-      'Pre-session assessment questionnaire',
-      '1-3 days intensive sessions (on-site or virtual)',
-      'Custom security architecture diagram',
-      'Threat modeling for your specific use case',
-      'Implementation roadmap with prioritized phases',
-      '30-day follow-up support',
-    ],
-    deliverables: [
-      'Security architecture document with diagrams',
-      'Threat model specific to your system',
-      'Prioritized implementation roadmap',
-      'Security framework recommendations',
-      'Compliance alignment strategy (if applicable)',
-    ],
-    results: [
-      'Built security foundation before scaling issues arise',
-      'Passed compliance audits with architecture already in place',
-      'Enabled faster development with clear security patterns',
-    ],
-    timeline: '1-3 days (intensive sessions)',
-    investment: '$4,000 - $11,000',
-    investmentNote: 'Strategy Session: $4,000 (1 day, virtual) | Deep Dive: $7,500 (2 days, comprehensive) | Enterprise Package: $11,000 (3 days, on-site)',
-    cta: 'Schedule Architecture Session',
-  },
-  {
-    icon: Users,
-    emoji: '👥',
-    title: 'Security Training & Workshops',
-    whoFor: 'Development teams needing security education, companies preparing for compliance, or organizations building security culture. Move from reactive to proactive security with hands-on training.',
-    includes: [
-      'Custom content tailored to your tech stack',
-      '4-8 hour interactive workshop (virtual or on-site)',
-      'Hands-on exercises and real-world scenarios',
-      'Workshop materials and reference guides',
-      '30-day Q&A support after training',
-      'Certificate of completion for participants',
-    ],
-    workshopTopics: [
-      'Secure Coding Fundamentals (OWASP Top 10)',
-      'IAM & Access Control Best Practices',
-      'API Security & Authentication',
-      'Cloud Security (AWS/GCP/Azure)',
-      'Incident Response Tabletop Exercises',
-      'Security for AI/ML Systems',
-    ],
-    deliverables: [
-      'Custom training materials and slides',
-      'Hands-on lab exercises',
-      'Reference documentation',
-      'Post-training assessment',
-    ],
-    results: [
-      'Reduced security vulnerabilities in code reviews',
-      'Improved team security awareness and practices',
-      'Built security champions within development teams',
-    ],
-    timeline: '4-8 hours (half-day to full-day)',
-    investment: '$2,500 - $6,000',
-    investmentNote: 'Half-Day Workshop: $2,500 (4 hours, up to 15 participants) | Full-Day Workshop: $4,500 (8 hours, up to 20 participants) | Multi-Day Program: $6,000+ (custom, 2-3 days)',
-    cta: 'Schedule Training',
-  },
-  {
-    icon: Briefcase,
-    emoji: '💼',
-    title: 'Fractional CISO Services',
-    whoFor: 'Series A/B companies needing security leadership, businesses pursuing compliance certifications, or organizations scaling security programs. Get part-time Chief Information Security Officer expertise without full-time salary.',
-    includes: [
-      '20-80 hours per month of senior security leadership',
-      'Security program development and oversight',
-      'Vendor security assessments',
-      'Board-level security reporting',
-      'Compliance roadmap and audit support',
-      'Security policy and procedure documentation',
-      'Incident response leadership',
-      'Strategic planning and budgeting',
-    ],
-    deliverables: [
-      'Security program strategy and roadmap',
-      'Board-ready security reports',
-      'Compliance documentation and policies',
-      'Vendor assessment reports',
-      'Quarterly security posture assessments',
-    ],
-    results: [
-      'Achieved compliance certifications (SOC 2, ISO 27001, HIPAA)',
-      'Built security programs from scratch',
-      'Passed investor due diligence security reviews',
-      'Reduced security incidents through proactive leadership',
-    ],
-    retainerOptions: [
-      {
-        name: 'Advisor Tier',
-        price: '$6,500/month',
-        hours: '20 hours per month',
-        sla: 'Strategic guidance and oversight',
-        calls: 'Bi-weekly strategy calls',
-        reporting: 'Quarterly board reports',
+        icon: Lock,
+        emoji: '🔐',
+        title: 'Access Analysis',
+        description: 'Analyze and improve your access control systems. IAM architecture, permissions, and authorization.',
+        includes: [
+          'Current access control assessment',
+          'Authorization model design (RBAC, ABAC, FGAC)',
+          'Access control architecture',
+          'Permission system optimization',
+          'Zero-trust architecture planning',
+          'Implementation guidance',
+        ],
       },
       {
-        name: 'Strategic Tier',
-        price: '$11,000/month',
-        hours: '40 hours per month',
-        sla: 'Program oversight and execution',
-        calls: 'Weekly strategy calls',
-        reporting: 'Monthly reports + quarterly board updates',
+        icon: Shield,
+        emoji: '🎯',
+        title: 'Threat Modeling',
+        description: 'Comprehensive threat modeling for your systems. Identify and mitigate security threats proactively.',
+        includes: [
+          'Threat model development',
+          'Attack vector analysis',
+          'Risk assessment and prioritization',
+          'Mitigation strategy development',
+          'Threat modeling documentation',
+          'Team training on threat modeling',
+        ],
       },
       {
-        name: 'Embedded Tier',
-        price: '$18,000/month',
-        hours: '80 hours per month',
-        sla: 'Hands-on leadership and execution',
-        calls: 'Multiple weekly touchpoints',
-        reporting: 'Weekly reports + monthly board updates',
+        icon: AlertTriangle,
+        emoji: '🚨',
+        title: 'Incident Response',
+        description: 'Fast response to security incidents. Investigation, containment, remediation, and post-mortem.',
+        includes: [
+          'Immediate incident assessment and scoping',
+          'Containment strategy and execution',
+          'Digital forensics investigation',
+          'Root cause analysis',
+          'Remediation implementation',
+          'Post-mortem documentation',
+          'Incident response planning',
+        ],
+      },
+      {
+        icon: CheckCircle,
+        emoji: '✅',
+        title: 'Compliance Preparation',
+        description: 'Prepare for SOC 2, ISO 27001, HIPAA, GDPR, and other compliance certifications.',
+        includes: [
+          'Compliance gap analysis',
+          'Security assessment for compliance',
+          'Policy and procedure documentation',
+          'Compliance roadmap development',
+          'Audit preparation support',
+          'Remediation guidance',
+        ],
+      },
+      {
+        icon: Search,
+        emoji: '🔍',
+        title: 'Vulnerability Analysis',
+        description: 'Comprehensive security assessment to identify vulnerabilities across infrastructure, applications, and processes.',
+        includes: [
+          'Vulnerability scanning and identification',
+          'Risk prioritization',
+          'Vulnerability assessment reports',
+          'Remediation recommendations',
+          'Security posture evaluation',
+          'Ongoing vulnerability monitoring',
+        ],
+      },
+      {
+        icon: Briefcase,
+        emoji: '👔',
+        title: 'Security Leadership Advising',
+        description: 'Fractional CISO services. Security program development, strategic planning, and board-level reporting.',
+        includes: [
+          'Security program development',
+          'Strategic security planning',
+          'Board-level security reporting',
+          'Vendor security assessments',
+          'Security policy development',
+          'Team leadership and guidance',
+        ],
+      },
+      {
+        icon: Bot,
+        emoji: '🤖',
+        title: 'AI/ML Security',
+        description: 'Specialized security for AI-powered products. Model security, prompt injection protection, and AI compliance.',
+        includes: [
+          'AI/ML security assessment',
+          'Threat modeling for AI systems',
+          'Prompt injection and jailbreak testing',
+          'Model security framework',
+          'Data privacy and governance',
+          'AI security best practices',
+        ],
+      },
+      {
+        icon: Settings,
+        emoji: '⚙️',
+        title: 'Security Automation',
+        description: 'Automate security processes. CI/CD security integration, vulnerability scanning, and continuous monitoring.',
+        includes: [
+          'Automated vulnerability scanning',
+          'CI/CD security integration',
+          'Security metrics and dashboards',
+          'Custom security tooling',
+          'Alert and notification automation',
+          'Security workflow optimization',
+        ],
+      },
+      {
+        icon: Phone,
+        emoji: '📞',
+        title: 'Emergency Security Hotline',
+        description: '24/7 access to security incident response expertise. Dedicated emergency support.',
+        includes: [
+          'Dedicated emergency phone number',
+          '2-hour response SLA for critical incidents',
+          'Unlimited non-emergency consultations',
+          'Monthly security check-ins',
+          'Incident response playbooks',
+          'Post-incident analysis',
+        ],
+      },
+      {
+        icon: Users,
+        emoji: '👥',
+        title: 'Security Training & Workshops',
+        description: 'Custom security training for your development team. Build security culture and knowledge.',
+        includes: [
+          'Custom content tailored to your tech stack',
+          'Interactive workshops (virtual or on-site)',
+          'Hands-on exercises and scenarios',
+          'Workshop materials and guides',
+          'Post-training Q&A support',
+          'Certificate of completion',
+        ],
       },
     ],
-    timeline: '6-12 month minimum engagement',
-    investment: '$6,500 - $18,000/month',
-    investmentNote: '(6-12 month minimum) | Includes: Security leadership, program development, compliance support, and board reporting',
-    cta: 'Discuss Fractional CISO',
-  },
-  {
-    icon: Phone,
-    emoji: '📞',
-    title: 'Emergency Security Hotline',
-    whoFor: 'High-availability SaaS platforms, healthcare and financial services companies, businesses handling sensitive customer data, or organizations with regulatory response requirements. Get 24/7 access to incident response expertise.',
-    includes: [
-      'Dedicated emergency phone number',
-      '2-hour response SLA for critical incidents',
-      'Unlimited non-emergency security consultations',
-      'Monthly security check-in call',
-      'Access to incident response playbooks',
-      'Post-incident analysis and reporting',
-    ],
-    deliverables: [
-      'Incident response documentation',
-      'Post-incident analysis reports',
-      'Updated response playbooks',
-      'Security recommendations from incidents',
-    ],
-    results: [
-      'Reduced incident response time by 60%',
-      'Contained security incidents before major impact',
-      'Improved incident response processes through expert guidance',
-    ],
-    timeline: '24/7 availability',
-    investment: '$1,500/month retainer + $190/hour incident response',
-    investmentNote: 'Monthly Retainer: $1,500 (reserves your spot, includes consultations) | Incident Response: $190/hour (only when activated) | Average Total: $2,000-3,500/month',
-    cta: 'Set Up Hotline',
   },
 ];
 
+// Expandable Service Card Component
+function ServiceCard({ service, serviceIndex, categoryIndex }: { service: any; serviceIndex: number; categoryIndex: number }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const ServiceIcon = service.icon;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: (categoryIndex * 0.1) + (serviceIndex * 0.05) }}
+      className="bg-[var(--theme-surface)] border border-[var(--theme-border)] rounded-lg p-6 hover:border-[var(--theme-primary)] transition-all"
+    >
+      <div className="flex items-start gap-3 mb-4">
+        <div className="text-3xl">{service.emoji}</div>
+        <div className="flex-1">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="p-1.5 bg-[var(--theme-primary)]/20 rounded">
+              <ServiceIcon size={20} className="text-[var(--theme-primary)]" />
+            </div>
+            <h3 className="text-xl font-bold text-[var(--theme-text)]">
+              {service.title}
+            </h3>
+          </div>
+          <p className="text-sm text-[var(--theme-text-secondary)] mb-4">
+            {service.description}
+          </p>
+        </div>
+      </div>
+
+      {/* Compact View - Always Visible */}
+      {service.includes && service.includes.length > 0 && (
+        <div className="mb-4">
+          <h4 className="text-sm font-semibold text-[var(--theme-text)] mb-2">
+            Includes:
+          </h4>
+          <ul className="space-y-1.5">
+            {service.includes.slice(0, 2).map((item: string, idx: number) => (
+              <li key={idx} className="flex items-start gap-2 text-xs text-[var(--theme-text-secondary)]">
+                <CheckCircle size={14} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
+            {!isExpanded && service.includes.length > 2 && (
+              <li className="text-xs text-[var(--theme-text-secondary)] italic">
+                + {service.includes.length - 2} more items
+              </li>
+            )}
+          </ul>
+        </div>
+      )}
+
+      {/* Expanded View - Collapsible */}
+      {isExpanded && service.includes && service.includes.length > 2 && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.3 }}
+          className="mb-4 overflow-hidden"
+        >
+          <ul className="space-y-1.5">
+            {service.includes.slice(2).map((item: string, idx: number) => (
+              <li key={idx + 2} className="flex items-start gap-2 text-xs text-[var(--theme-text-secondary)]">
+                <CheckCircle size={14} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+      )}
+
+      {/* Expand/Collapse Button */}
+      {service.includes && service.includes.length > 2 && (
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="w-full mb-4 px-4 py-2 text-sm text-[var(--theme-primary)] hover:bg-[var(--theme-primary)]/10 rounded-lg transition-colors flex items-center justify-center gap-2"
+        >
+          {isExpanded ? (
+            <>
+              <span>Show Less</span>
+              <ChevronUp size={16} />
+            </>
+          ) : (
+            <>
+              <span>Show More Details</span>
+              <ChevronDown size={16} />
+            </>
+          )}
+        </button>
+      )}
+
+      <Link href="/contact">
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="w-full px-4 py-2 bg-[var(--theme-primary)] text-white rounded-lg font-semibold hover:bg-[var(--theme-secondary)] transition-colors text-sm"
+        >
+          Discuss {service.title}
+        </motion.button>
+      </Link>
+    </motion.div>
+  );
+}
+
+// Service Grid Component
+function ServiceGrid({ services, categoryIndex }: { services: any[]; categoryIndex: number }) {
+  return (
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map((service, serviceIndex) => (
+        <ServiceCard
+          key={service.title}
+          service={service}
+          serviceIndex={serviceIndex}
+          categoryIndex={categoryIndex}
+        />
+      ))}
+    </div>
+  );
+}
+
 const faqs = [
+  {
+    question: 'How is pricing determined?',
+    answer: 'Pricing is based on the scope and amount of work requested. All pricing is negotiable and will be discussed during our initial consultation. I work with clients to find pricing that fits their budget and needs.',
+  },
   {
     question: 'Do you work with my tech stack?',
     answer: 'I specialize in AWS, Python, JavaScript/Node.js, PostgreSQL, and most modern development stacks. I\'m technology-agnostic and comfortable learning what\'s needed. If you\'re using something unusual, let\'s discuss—I\'ve worked with everything from cutting-edge AI frameworks to legacy mainframe systems.',
@@ -528,10 +645,6 @@ const faqs = [
   {
     question: 'What if the scope changes mid-project?',
     answer: 'We\'ll establish clear milestones and check-ins. If scope changes, we handle it through a transparent change order process—you\'ll always know what you\'re paying for and why. No surprise bills.',
-  },
-  {
-    question: 'Do you offer payment plans?',
-    answer: 'Yes. Standard terms for project work are 50% upfront, 50% on delivery. For larger engagements over $20K, we can structure milestone-based payments. Retainers are invoiced monthly in advance.',
   },
   {
     question: 'Do you sign NDAs and work under contract?',
@@ -570,529 +683,157 @@ export default function ServicesPage() {
           className="mb-16 text-center"
         >
           <h1 className="text-4xl md:text-5xl font-bold text-[var(--theme-text)] mb-4">
-            Security Engineering Services
+            Technical Services & Consulting
           </h1>
           <p className="text-lg text-[var(--theme-text-secondary)] max-w-3xl mx-auto mb-6">
-            Enterprise-quality security adapted for growing companies. Clear scope, transparent pricing, measurable results.
+            Enterprise-quality technical services adapted for growing companies. Programming, mentorship, consultation, and security work.
           </p>
           <p className="text-[var(--theme-text-secondary)] max-w-4xl mx-auto mb-4">
-            I offer specialized security services designed for startups and mid-market companies that need more than basic security but aren&apos;t ready to hire a full security team. All services include documentation, knowledge transfer, and a support period after delivery.
+            I offer a wide range of technical services designed for startups and mid-market companies. From building web applications to security audits, from mentorship to system design—I bring 7+ years of Amazon and CIA experience to help you build better systems.
           </p>
-          <p className="text-[var(--theme-text-secondary)] max-w-4xl mx-auto mb-4">
-            I offer services at multiple price points because I remember what it was like starting out. Sometimes you just need an hour of expert advice ($500 advisory session). Sometimes you need a quick security check before a big demo ($2,500 rapid review). And sometimes you need comprehensive security engineering ($15K+ full projects). Start where it makes sense for your stage and budget. Many clients begin with advisory sessions, then move to larger projects once we&apos;ve built trust and they see the value.
-          </p>
-          <p className="text-sm text-[var(--theme-text-secondary)] max-w-4xl mx-auto italic">
-            * All prices shown are estimates and can be customized based on the specific scope and amount of work requested. Final pricing will be provided after discussing your unique requirements.
-          </p>
+          <div className="space-y-3 max-w-4xl mx-auto mb-6">
+            <p className="text-sm text-[var(--theme-text-secondary)] italic bg-[var(--theme-primary)]/10 border border-[var(--theme-primary)] rounded-lg p-4">
+              💰 <strong>Pricing:</strong> All pricing is based on the scope and amount of work requested and is negotiable. Contact me to discuss your specific needs and get a customized quote.
+            </p>
+            <p className="text-sm text-[var(--theme-text-secondary)] italic bg-green-500/10 border border-green-500 rounded-lg p-4">
+              🎁 <strong>Free Consultation:</strong> All initial 30-minute consultations are always free. No obligation, no sales pressure—just an honest conversation about your needs and how I can help.
+            </p>
+          </div>
         </motion.div>
 
-        {/* Start Small Call-Out Box */}
+        {/* TLDR Quick Overview Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-[var(--theme-primary)]/10 border-2 border-[var(--theme-primary)] rounded-lg p-8 mb-16"
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-16"
         >
-          <div className="flex items-start gap-4">
-            <div className="text-4xl">💡</div>
-            <div className="flex-1">
-              <h2 className="text-2xl font-bold text-[var(--theme-text)] mb-3">
-                Not Sure If You Need a Full Engagement?
+          <div className="bg-[var(--theme-surface)] border border-[var(--theme-primary)] rounded-lg p-8 md:p-10">
+            <div className="flex items-center gap-3 mb-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-[var(--theme-text)]">
+                TLDR: What I Offer
               </h2>
-              <p className="text-[var(--theme-text-secondary)] mb-4">
-                Start with a $500 advisory session or $2,500 rapid review. Get expert guidance without committing to a full project.
-              </p>
-              <p className="text-[var(--theme-text-secondary)] mb-6">
-                Many clients start small to build trust, then move to larger engagements when they see the value.
-              </p>
-              <Link href="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-6 py-3 bg-[var(--theme-primary)] text-white rounded-lg font-semibold hover:bg-[var(--theme-secondary)] transition-colors"
-                >
-                  Book Advisory Session
-                </motion.button>
-              </Link>
+              <span className="text-2xl">⚡</span>
+            </div>
+            <p className="text-[var(--theme-text-secondary)] mb-8 max-w-3xl">
+              Quick overview of all services. Click any category below to jump to details, or scroll down to see everything.
+            </p>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              {serviceCategories.map((category, index) => {
+                const CategoryIcon = category.icon;
+                return (
+                  <a
+                    key={category.id}
+                    href={`#${category.id}`}
+                    className="group bg-[var(--theme-bg)] border border-[var(--theme-border)] rounded-lg p-6 hover:border-[var(--theme-primary)] hover:shadow-lg transition-all"
+                  >
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="text-4xl">{category.emoji}</div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-2">
+                          <CategoryIcon size={24} className="text-[var(--theme-primary)]" />
+                          <h3 className="text-xl font-bold text-[var(--theme-text)] group-hover:text-[var(--theme-primary)] transition-colors">
+                            {category.title}
+                          </h3>
+                        </div>
+                        <p className="text-sm text-[var(--theme-text-secondary)] mb-3">
+                          {category.description}
+                        </p>
+                        <div className="flex items-center gap-4 text-xs text-[var(--theme-text-secondary)]">
+                          <span className="px-2 py-1 bg-[var(--theme-primary)]/20 text-[var(--theme-primary)] rounded">
+                            {category.services.length} services
+                          </span>
+                          <span className="group-hover:text-[var(--theme-primary)] transition-colors">
+                            View details →
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Quick Service List Preview */}
+                    <div className="mt-4 pt-4 border-t border-[var(--theme-border)]">
+                      <p className="text-xs font-semibold text-[var(--theme-text-secondary)] mb-2 uppercase">
+                        Includes:
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {category.services.slice(0, 4).map((service: any) => (
+                          <span
+                            key={service.title}
+                            className="text-xs px-2 py-1 bg-[var(--theme-surface)] border border-[var(--theme-border)] rounded text-[var(--theme-text-secondary)]"
+                          >
+                            {service.title}
+                          </span>
+                        ))}
+                        {category.services.length > 4 && (
+                          <span className="text-xs px-2 py-1 text-[var(--theme-text-secondary)] italic">
+                            +{category.services.length - 4} more
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
             </div>
           </div>
         </motion.div>
 
-        {/* Consultation & Advisory Services Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--theme-text)] mb-4 text-center">
-            Quick Consultations & Advisory Sessions
-          </h2>
-          <p className="text-lg text-[var(--theme-text-secondary)] mb-12 text-center max-w-3xl mx-auto">
-            Not every security challenge needs a full engagement. Sometimes you just need expert advice, a second opinion, or guidance on a specific decision.
-          </p>
-          <div className="space-y-12">
-            {consultationServices.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-[var(--theme-surface)] border border-[var(--theme-border)] rounded-lg p-8 md:p-10"
-                >
-                  <div className="flex items-start gap-4 mb-6">
-                    <div className="text-4xl">{service.emoji}</div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 bg-[var(--theme-primary)]/20 rounded-lg">
-                          <Icon size={24} className="text-[var(--theme-primary)]" />
-                        </div>
-                        <h3 className="text-2xl font-bold text-[var(--theme-text)]">
-                          {service.title}
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-8 mb-6">
-                    <div>
-                      <h4 className="text-lg font-semibold text-[var(--theme-text)] mb-3">
-                        WHO THIS IS FOR:
-                      </h4>
-                      <p className="text-[var(--theme-text-secondary)] mb-6">
-                        {service.whoFor}
-                      </p>
-
-                      <h4 className="text-lg font-semibold text-[var(--theme-text)] mb-3">
-                        {service.sessionTypes ? 'Single-Focus Sessions (choose one):' : 'WHAT YOU GET:'}
-                      </h4>
-                      {service.sessionTypes && (
-                        <ul className="space-y-2 mb-4">
-                          {service.sessionTypes.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-2">
-                              <CheckCircle size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
-                              <span className="text-[var(--theme-text-secondary)]">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                      {service.topics && (
-                        <>
-                          <p className="text-sm font-semibold text-[var(--theme-text)] mb-2">Topics we can cover:</p>
-                          <ul className="space-y-2 mb-4">
-                            {service.topics.map((item, idx) => (
-                              <li key={idx} className="flex items-start gap-2">
-                                <ArrowRight size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
-                                <span className="text-[var(--theme-text-secondary)]">{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </>
-                      )}
-                      {service.includes && (
-                        <>
-                          <p className="text-sm font-semibold text-[var(--theme-text)] mb-2">Each session includes:</p>
-                          <ul className="space-y-2">
-                            {service.includes.map((item, idx) => (
-                              <li key={idx} className="flex items-start gap-2">
-                                <ArrowRight size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
-                                <span className="text-[var(--theme-text-secondary)]">{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </>
-                      )}
-                    </div>
-
-                    <div>
-                      {service.notIncluded && (
-                        <>
-                          <h4 className="text-lg font-semibold text-[var(--theme-text)] mb-3">
-                            What this is NOT:
-                          </h4>
-                          <ul className="space-y-2 mb-6">
-                            {service.notIncluded.map((item, idx) => (
-                              <li key={idx} className="flex items-start gap-2">
-                                <span className="text-red-400">→</span>
-                                <span className="text-[var(--theme-text-secondary)]">{item}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </>
-                      )}
-                      {service.perfectFor && (
-                        <p className="text-sm font-semibold text-[var(--theme-text)] mb-2">
-                          Perfect for: {service.perfectFor}
-                        </p>
-                      )}
-                      <div className="bg-[var(--theme-bg)] border border-[var(--theme-border)] rounded-lg p-4 mt-6">
-                        <div className="space-y-2">
-                          <div>
-                            <span className="text-sm font-semibold text-[var(--theme-text-secondary)]">TIMELINE: </span>
-                            <span className="text-[var(--theme-text)] font-medium">{service.timeline}</span>
-                          </div>
-                          <div>
-                            <span className="text-sm font-semibold text-[var(--theme-text-secondary)]">INVESTMENT: </span>
-                            <span className="text-[var(--theme-primary)] font-semibold text-lg">{service.investment}</span>
-                          </div>
-                          {service.investmentNote && (
-                            <p className="text-sm text-[var(--theme-text-secondary)] mt-2">
-                              {service.investmentNote}
-                            </p>
-                          )}
-                          <p className="text-xs text-[var(--theme-text-secondary)] italic mt-2">
-                            * Price is an estimate and can be customized based on scope
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <Link href="/contact">
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="w-full sm:w-auto px-8 py-4 bg-[var(--theme-primary)] text-white rounded-lg font-semibold hover:bg-[var(--theme-secondary)] transition-colors shadow-lg"
-                    >
-                      {service.cta}
-                    </motion.button>
-                  </Link>
-                </motion.div>
-              );
-            })}
+        {/* Category Navigation Bar - Sticky */}
+        <div className="sticky top-4 z-50 mb-12">
+          <div className="bg-[var(--theme-surface)] border border-[var(--theme-border)] rounded-lg p-4 shadow-lg">
+            <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
+              <span className="text-sm font-semibold text-[var(--theme-text-secondary)] mr-2">Jump to:</span>
+              {serviceCategories.map((category) => {
+                const CategoryIcon = category.icon;
+                return (
+                  <a
+                    key={category.id}
+                    href={`#${category.id}`}
+                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-[var(--theme-text)] hover:text-[var(--theme-primary)] hover:bg-[var(--theme-primary)]/10 rounded-lg transition-colors"
+                  >
+                    <CategoryIcon size={16} />
+                    <span>{category.title}</span>
+                  </a>
+                );
+              })}
+            </div>
           </div>
-        </motion.div>
-
-        {/* Service Packages */}
-        <div className="space-y-16 mb-20">
-          {servicePackages.map((pkg, index) => {
-            const Icon = pkg.icon;
-            return (
-              <motion.div
-                key={pkg.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-[var(--theme-surface)] border border-[var(--theme-border)] rounded-lg p-8 md:p-10"
-              >
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="text-4xl">{pkg.emoji}</div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="p-2 bg-[var(--theme-primary)]/20 rounded-lg">
-                        <Icon size={24} className="text-[var(--theme-primary)]" />
-                      </div>
-                      <h2 className="text-3xl font-bold text-[var(--theme-text)]">
-                        {pkg.title}
-                      </h2>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-8 mb-6">
-                  <div>
-                    <h3 className="text-lg font-semibold text-[var(--theme-text)] mb-3">
-                      WHO THIS IS FOR:
-                    </h3>
-                    <p className="text-[var(--theme-text-secondary)] mb-6">
-                      {pkg.whoFor}
-                    </p>
-
-                    <h3 className="text-lg font-semibold text-[var(--theme-text)] mb-3">
-                      WHAT&apos;S INCLUDED:
-                    </h3>
-                    <ul className="space-y-2 mb-6">
-                      {(pkg.includes || []).map((item, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
-                          <CheckCircle size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
-                          <span className="text-[var(--theme-text-secondary)]">{item}</span>
-                        </li>
-                      ))}
-                      {pkg.includesReactive && (
-                        <>
-                          <li className="text-sm font-semibold text-[var(--theme-text)] mt-4 mb-2">Reactive (Incident Already Occurred):</li>
-                          {pkg.includesReactive.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-2">
-                              <CheckCircle size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
-                              <span className="text-[var(--theme-text-secondary)]">{item}</span>
-                            </li>
-                          ))}
-                          <li className="text-sm font-semibold text-[var(--theme-text)] mt-4 mb-2">Proactive (Before Incident):</li>
-                          {pkg.includesProactive?.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-2">
-                              <CheckCircle size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
-                              <span className="text-[var(--theme-text-secondary)]">{item}</span>
-                            </li>
-                          ))}
-                        </>
-                      )}
-                    </ul>
-                    {(pkg as any).workshopTopics && (
-                      <>
-                        <h3 className="text-lg font-semibold text-[var(--theme-text)] mb-3">
-                          WORKSHOP TOPICS:
-                        </h3>
-                        <ul className="space-y-2 mb-6">
-                          {(pkg as any).workshopTopics.map((item: string, idx: number) => (
-                            <li key={idx} className="flex items-start gap-2">
-                              <ArrowRight size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
-                              <span className="text-[var(--theme-text-secondary)]">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </>
-                    )}
-                  </div>
-
-                  <div>
-                    {pkg.deliverables && pkg.deliverables.length > 0 && (
-                      <>
-                        <h3 className="text-lg font-semibold text-[var(--theme-text)] mb-3">
-                          DELIVERABLES:
-                        </h3>
-                        <ul className="space-y-2 mb-6">
-                          {pkg.deliverables.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-2">
-                              <ArrowRight size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
-                              <span className="text-[var(--theme-text-secondary)]">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </>
-                    )}
-
-                    {pkg.results && (
-                      <>
-                        <h3 className="text-lg font-semibold text-[var(--theme-text)] mb-3">
-                          TYPICAL RESULTS:
-                        </h3>
-                        {pkg.impactNote && (
-                          <p className="text-sm text-[var(--theme-text-secondary)] italic mb-2">
-                            {pkg.impactNote}:
-                          </p>
-                        )}
-                        <ul className="space-y-2 mb-6">
-                          {pkg.results.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-2">
-                              <CheckCircle size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
-                              <span className="text-[var(--theme-text-secondary)]">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </>
-                    )}
-
-                    {pkg.experience && (
-                      <>
-                        <h3 className="text-lg font-semibold text-[var(--theme-text)] mb-3">
-                          SPECIALIZED BACKGROUND:
-                        </h3>
-                        {(pkg as any).expertiseNote && (
-                          <p className="text-sm text-[var(--theme-text-secondary)] italic mb-2">
-                            {(pkg as any).expertiseNote}:
-                          </p>
-                        )}
-                        <ul className="space-y-2 mb-6">
-                          {pkg.experience.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-2">
-                              <CheckCircle size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
-                              <span className="text-[var(--theme-text-secondary)]">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </>
-                    )}
-
-                    {pkg.experience && pkg.experienceNote && (
-                      <>
-                        <h3 className="text-lg font-semibold text-[var(--theme-text)] mb-3">
-                          TRACK RECORD:
-                        </h3>
-                        <p className="text-sm text-[var(--theme-text-secondary)] italic mb-2">
-                          {pkg.experienceNote}:
-                        </p>
-                        <ul className="space-y-2 mb-6">
-                          {pkg.experience.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-2">
-                              <CheckCircle size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
-                              <span className="text-[var(--theme-text-secondary)]">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </>
-                    )}
-
-                    {pkg.howItWorks && (
-                      <>
-                        <h3 className="text-lg font-semibold text-[var(--theme-text)] mb-3">
-                          HOW IT WORKS:
-                        </h3>
-                        <p className="text-[var(--theme-text-secondary)] mb-3">
-                          You get a bank of hours each month to use as needed:
-                        </p>
-                        <ul className="space-y-2 mb-6">
-                          {pkg.howItWorks.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-2">
-                              <CheckCircle size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
-                              <span className="text-[var(--theme-text-secondary)]">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                        <p className="text-sm text-[var(--theme-text-secondary)] italic mb-4">
-                          Hours don&apos;t roll over, but we plan monthly to ensure efficient use.
-                        </p>
-                      </>
-                    )}
-
-                    {pkg.benefits && (
-                      <>
-                        <h3 className="text-lg font-semibold text-[var(--theme-text)] mb-3">
-                          WHY RETAINER WORKS:
-                        </h3>
-                        <ul className="space-y-2 mb-6">
-                          {pkg.benefits.map((item, idx) => (
-                            <li key={idx} className="flex items-start gap-2">
-                              <ArrowRight size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
-                              <span className="text-[var(--theme-text-secondary)]">{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </>
-                    )}
-
-                    {pkg.retainerOptions && (
-                      <>
-                        <h3 className="text-lg font-semibold text-[var(--theme-text)] mb-3">
-                          RETAINER OPTIONS:
-                        </h3>
-                        <div className="space-y-4 mb-6">
-                          {pkg.retainerOptions.map((option, idx) => (
-                            <div key={idx} className="bg-[var(--theme-bg)] border border-[var(--theme-border)] rounded-lg p-4">
-                              <div className="font-semibold text-[var(--theme-text)] mb-2">{option.name}: {option.price}</div>
-                              <ul className="text-sm text-[var(--theme-text-secondary)] space-y-1">
-                                <li>• {option.hours}</li>
-                                <li>• {option.sla}</li>
-                                <li>• {option.calls}</li>
-                                <li>• {option.reporting}</li>
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
-                        <p className="text-sm text-[var(--theme-text-secondary)]">
-                          {pkg.retainerNote || 'All retainers include direct access via Slack/email and first priority for overflow work.'}
-                        </p>
-                      </>
-                    )}
-
-                    <div className="bg-[var(--theme-bg)] border border-[var(--theme-border)] rounded-lg p-4 mt-6">
-                      <div className="space-y-2">
-                        <div>
-                          <span className="text-sm font-semibold text-[var(--theme-text-secondary)]">TIMELINE: </span>
-                          <span className="text-[var(--theme-text)] font-medium">{pkg.timeline}</span>
-                        </div>
-                        <div>
-                          <span className="text-sm font-semibold text-[var(--theme-text-secondary)]">INVESTMENT: </span>
-                          <span className="text-[var(--theme-primary)] font-semibold text-lg">{pkg.investment}</span>
-                        </div>
-                        {pkg.investmentNote && (
-                          <p className="text-sm text-[var(--theme-text-secondary)] mt-2">
-                            {pkg.investmentNote}
-                          </p>
-                        )}
-                        {pkg.investment && pkg.investment.includes('Includes:') && (
-                          <p className="text-sm text-[var(--theme-text-secondary)] mt-2">
-                            Includes: All assessment work, documentation, and 2 weeks post-delivery support
-                          </p>
-                        )}
-                        <p className="text-xs text-[var(--theme-text-secondary)] italic mt-2">
-                          * Price is an estimate and can be customized based on scope
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-4 mt-6">
-                  <Link href="/contact">
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="w-full sm:w-auto px-8 py-4 bg-[var(--theme-primary)] text-white rounded-lg font-semibold hover:bg-[var(--theme-secondary)] transition-colors shadow-lg"
-                    >
-                      {pkg.cta}
-                    </motion.button>
-                  </Link>
-                  {pkg.ctaSecondary && (
-                    <Link href="/contact">
-                      <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="w-full sm:w-auto px-8 py-4 border-2 border-[var(--theme-primary)] text-[var(--theme-primary)] rounded-lg font-semibold hover:bg-[var(--theme-primary)]/10 transition-colors"
-                      >
-                        {pkg.ctaSecondary}
-                      </motion.button>
-                    </Link>
-                  )}
-                </div>
-              </motion.div>
-            );
-          })}
         </div>
 
-        {/* Service Comparison Table */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-20"
-        >
-          <h2 className="text-3xl font-bold text-[var(--theme-text)] mb-8 text-center">
-            Which Service Is Right For You?
-          </h2>
-          <div className="bg-[var(--theme-surface)] border border-[var(--theme-border)] rounded-lg overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-[var(--theme-bg)]">
-                  <tr>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-[var(--theme-text)] border-b border-[var(--theme-border)]">Your Situation</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-[var(--theme-text)] border-b border-[var(--theme-border)]">Recommended Service</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-[var(--theme-text)] border-b border-[var(--theme-border)]">Investment</th>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-[var(--theme-text)] border-b border-[var(--theme-border)]">Timeline</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { situation: '"I need quick advice on a specific security decision"', service: 'Security Advisory Session', investment: '$500', timeline: '1 session' },
-                    { situation: '"I want to learn security engineering from an expert"', service: 'Technical Security Mentorship', investment: '$150-$300/mo', timeline: 'Ongoing' },
-                    { situation: '"We need basic security feedback before launching"', service: 'Rapid Security Review', investment: '$2,500', timeline: '1 week' },
-                    { situation: '"We need security review of specific code before deployment"', service: 'Security Code Review', investment: '$2K-$9K', timeline: '1-2 weeks' },
-                    { situation: '"We\'re preparing for investor due diligence"', service: 'Security Audit & Compliance', investment: '$12K-$35K', timeline: '2-4 weeks' },
-                    { situation: '"We need security architecture designed from scratch"', service: 'Security Architecture Consulting', investment: '$4K-$11K', timeline: '1-3 days' },
-                    { situation: '"Our permissions system is becoming unmaintainable"', service: 'IAM & Access Control', investment: '$14K-$45K', timeline: '3-5 weeks' },
-                    { situation: '"We waste too much time on manual security work"', service: 'Security Automation', investment: '$15K-$55K', timeline: '4-6 weeks' },
-                    { situation: '"We\'re building AI-powered features"', service: 'AI/ML Security', investment: '$18K-$60K', timeline: '3-5 weeks' },
-                    { situation: '"We suspect a security breach"', service: 'Incident Response', investment: '$6K-$18K', timeline: 'Immediate' },
-                    { situation: '"We need security training for our development team"', service: 'Security Training & Workshops', investment: '$2.5K-$6K', timeline: '4-8 hours' },
-                    { situation: '"We need ongoing security support"', service: 'Security Retainer', investment: '$4.5K-$13.5K/mo', timeline: 'Monthly' },
-                    { situation: '"We need part-time security leadership"', service: 'Fractional CISO', investment: '$6.5K-$18K/mo', timeline: '6-12 months' },
-                    { situation: '"We need 24/7 emergency security access"', service: 'Emergency Security Hotline', investment: '$1.5K/mo + $190/hr', timeline: '24/7' },
-                  ].map((row, idx) => (
-                    <tr key={idx} className={idx % 2 === 0 ? 'bg-[var(--theme-surface)]' : 'bg-[var(--theme-bg)]'}>
-                      <td className="px-6 py-4 text-sm text-[var(--theme-text-secondary)] border-b border-[var(--theme-border)]">{row.situation}</td>
-                      <td className="px-6 py-4 text-sm font-medium text-[var(--theme-text)] border-b border-[var(--theme-border)]">{row.service}</td>
-                      <td className="px-6 py-4 text-sm text-[var(--theme-primary)] font-semibold border-b border-[var(--theme-border)]">{row.investment}</td>
-                      <td className="px-6 py-4 text-sm text-[var(--theme-text-secondary)] border-b border-[var(--theme-border)]">{row.timeline}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </motion.div>
+        {/* Service Categories */}
+        {serviceCategories.map((category, categoryIndex) => {
+          const CategoryIcon = category.icon;
+          return (
+            <motion.div
+              key={category.id}
+              id={category.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: categoryIndex * 0.1 }}
+              className="mb-20 scroll-mt-24"
+            >
+              <div className="flex items-center gap-4 mb-8">
+                <div className="text-5xl">{category.emoji}</div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="p-2 bg-[var(--theme-primary)]/20 rounded-lg">
+                      <CategoryIcon size={32} className="text-[var(--theme-primary)]" />
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold text-[var(--theme-text)]">
+                      {category.title}
+                    </h2>
+                  </div>
+                  <p className="text-lg text-[var(--theme-text-secondary)]">
+                    {category.description}
+                  </p>
+                </div>
+              </div>
+
+              <ServiceGrid services={category.services} categoryIndex={categoryIndex} />
+            </motion.div>
+          );
+        })}
 
         {/* Custom Projects Section */}
         <motion.div
@@ -1105,30 +846,10 @@ export default function ServicesPage() {
             Need Something Different?
           </h2>
           <p className="text-lg text-[var(--theme-text-secondary)] mb-6">
-            Every business has unique security challenges. If your needs don&apos;t fit a standard package above, let&apos;s discuss a custom engagement.
+            Every business has unique technical challenges. If your needs don&apos;t fit a standard service above, let&apos;s discuss a custom engagement.
           </p>
           <p className="text-[var(--theme-text-secondary)] mb-6">
-            Additional areas I work in:
-          </p>
-          <div className="grid md:grid-cols-2 gap-4 mb-6">
-            {[
-              'Application security reviews and penetration testing',
-              'Cloud security architecture (AWS, Azure, GCP)',
-              'Security training and team enablement',
-              'Data pipeline security and governance',
-              'Compliance program development',
-              'Third-party security assessments',
-              'Security tool evaluation and selection',
-              'Technical security advisory (fractional CISO work)',
-            ].map((area, idx) => (
-              <div key={idx} className="flex items-center gap-2">
-                <CheckCircle size={18} className="text-[var(--theme-primary)] flex-shrink-0" />
-                <span className="text-[var(--theme-text-secondary)]">{area}</span>
-              </div>
-            ))}
-          </div>
-          <p className="text-[var(--theme-text-secondary)] mb-6">
-            I&apos;ll work with you to define scope, deliverables, timeline, and pricing that fits your situation.
+            I&apos;ll work with you to define scope, deliverables, timeline, and pricing that fits your situation. All pricing is negotiable based on the work required.
           </p>
           <Link href="/contact">
             <motion.button
@@ -1186,7 +907,7 @@ export default function ServicesPage() {
             Ready to Get Started?
           </h2>
           <p className="text-lg text-[var(--theme-text-secondary)] mb-8 max-w-2xl mx-auto">
-            Schedule a free 20-minute consultation to discuss your security needs. No obligation, no sales pressure—just an honest conversation about your challenges and how I can help.
+            Schedule a free 30-minute consultation to discuss your technical needs. All initial consultations are always free—no obligation, no sales pressure. Just an honest conversation about your challenges and how I can help. All pricing is negotiable based on your specific requirements.
           </p>
           <Link href="/contact">
             <motion.button

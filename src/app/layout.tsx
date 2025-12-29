@@ -13,7 +13,7 @@ import EasterEggs from '@/components/EasterEggs';
 
 export const metadata: Metadata = {
   title: 'Elijah Winter | Enterprise-Grade Security Engineering for Growing Companies',
-  description: 'Former Amazon & CIA security leader. Security audits, IAM architecture, AI/ML security, incident response, and fractional CISO services for startups and mid-market companies. Services from $500 to $60,000+.',
+  description: 'Former Amazon & CIA security leader. Programming, mentorship, technical consultation, and security services for startups and mid-market companies. Pricing based on scope and negotiable.',
   keywords: ['security consultant', 'security engineer', 'Amazon security', 'CIA security', 'AI security', 'IAM architecture', 'incident response', 'SOC 2 compliance', 'security audit', 'cybersecurity consultant', 'enterprise security', 'startup security'],
   authors: [{ name: 'Elijah Winter' }],
   openGraph: {
@@ -33,7 +33,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
       </head>
       <body className="font-sans antialiased">
         <ThemeProvider>

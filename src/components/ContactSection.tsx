@@ -178,7 +178,7 @@ export default function ContactSection() {
                   htmlFor="projectType"
                   className="block text-sm font-medium text-[var(--theme-text)] mb-2"
                 >
-                  What type of security help do you need?
+                  What type of service are you interested in?
                 </label>
                 <select
                   id="projectType"
@@ -188,13 +188,43 @@ export default function ContactSection() {
                   required
                   className="w-full px-4 py-2 bg-[var(--theme-surface)] border border-[var(--theme-border)] rounded-lg text-[var(--theme-text)] focus:outline-none focus:ring-2 focus:ring-[var(--theme-primary)]"
                 >
-                  <option value="">Select a project type...</option>
-                  <option value="Security Audit / Compliance">Security Audit / Compliance</option>
-                  <option value="IAM / Access Control Architecture">IAM / Access Control Architecture</option>
-                  <option value="Security Automation / Tooling">Security Automation / Tooling</option>
-                  <option value="Incident Response / Forensics">Incident Response / Forensics</option>
-                  <option value="AI/ML Security">AI/ML Security</option>
-                  <option value="Security Retainer / Ongoing Support">Security Retainer / Ongoing Support</option>
+                  <option value="">Select a service type...</option>
+                  <optgroup label="Programming">
+                    <option value="Web Application Development">Web Application Development</option>
+                    <option value="Backend Development">Backend Development</option>
+                    <option value="System Design">System Design</option>
+                    <option value="CI/CD & DevOps Setup">CI/CD & DevOps Setup</option>
+                    <option value="Analytics Platform Development">Analytics Platform Development</option>
+                    <option value="Data ETL / Data Lake Building">Data ETL / Data Lake Building</option>
+                    <option value="Automation">Automation</option>
+                    <option value="Database Management / Migration">Database Management / Migration</option>
+                    <option value="Cloud Migration & Planning">Cloud Migration & Planning</option>
+                  </optgroup>
+                  <optgroup label="Mentorship">
+                    <option value="Programming Mentorship">Programming Mentorship</option>
+                    <option value="Security Mentorship">Security Mentorship</option>
+                    <option value="Career Mentorship">Career Mentorship</option>
+                    <option value="Technical Leadership Mentorship">Technical Leadership Mentorship</option>
+                  </optgroup>
+                  <optgroup label="Technical Consultation">
+                    <option value="Technical Advisory Sessions">Technical Advisory Sessions</option>
+                    <option value="Architecture Consulting">Architecture Consulting</option>
+                    <option value="Technical Reviews">Technical Reviews</option>
+                    <option value="Technology Evaluation">Technology Evaluation</option>
+                  </optgroup>
+                  <optgroup label="Security Work">
+                    <option value="Secure Design Review">Secure Design Review</option>
+                    <option value="Secure Code Review">Secure Code Review</option>
+                    <option value="Access Analysis / IAM">Access Analysis / IAM</option>
+                    <option value="Threat Modeling">Threat Modeling</option>
+                    <option value="Incident Response">Incident Response</option>
+                    <option value="Compliance Preparation">Compliance Preparation</option>
+                    <option value="Vulnerability Analysis">Vulnerability Analysis</option>
+                    <option value="Security Leadership Advising / Fractional CISO">Security Leadership Advising / Fractional CISO</option>
+                    <option value="AI/ML Security">AI/ML Security</option>
+                    <option value="Security Automation">Security Automation</option>
+                    <option value="Security Training & Workshops">Security Training & Workshops</option>
+                  </optgroup>
                   <option value="Not sure / Multiple areas">Not sure / Multiple areas</option>
                 </select>
               </div>
@@ -225,7 +255,7 @@ export default function ContactSection() {
                   htmlFor="budgetRange"
                   className="block text-sm font-medium text-[var(--theme-text)] mb-2"
                 >
-                  Budget Range <span className="text-[var(--theme-text-secondary)] text-xs">(helps me recommend the right approach)</span>
+                  Project Scope <span className="text-[var(--theme-text-secondary)] text-xs">(helps me recommend the right approach)</span>
                 </label>
                 <select
                   id="budgetRange"
@@ -234,15 +264,13 @@ export default function ContactSection() {
                   onChange={handleChange}
                   className="w-full px-4 py-2 bg-[var(--theme-surface)] border border-[var(--theme-border)] rounded-lg text-[var(--theme-text)] focus:outline-none focus:ring-2 focus:ring-[var(--theme-primary)]"
                 >
-                  <option value="">Select budget range...</option>
-                  <option value="Under $1,000 (advisory/mentorship only)">Under $1,000 (advisory/mentorship only)</option>
-                  <option value="$1,000 - $5,000 (rapid reviews, code reviews)">$1,000 - $5,000 (rapid reviews, code reviews)</option>
-                  <option value="$5,000 - $15,000 (smaller projects, architecture consulting)">$5,000 - $15,000 (smaller projects, architecture consulting)</option>
-                  <option value="$15,000 - $35,000 (standard projects)">$15,000 - $35,000 (standard projects)</option>
-                  <option value="$35,000 - $60,000 (comprehensive projects)">$35,000 - $60,000 (comprehensive projects)</option>
-                  <option value="$60,000+ (enterprise engagements)">$60,000+ (enterprise engagements)</option>
-                  <option value="Monthly retainer ($1.5K - $18K/month)">Monthly retainer ($1.5K - $18K/month)</option>
-                  <option value="Not sure yet">Not sure yet</option>
+                  <option value="">Select project scope...</option>
+                  <option value="Small project (1-2 weeks)">Small project (1-2 weeks)</option>
+                  <option value="Medium project (2-4 weeks)">Medium project (2-4 weeks)</option>
+                  <option value="Large project (1-3 months)">Large project (1-3 months)</option>
+                  <option value="Ongoing retainer/mentorship">Ongoing retainer/mentorship</option>
+                  <option value="One-time consultation">One-time consultation</option>
+                  <option value="Not sure - let's discuss">Not sure - let&apos;s discuss</option>
                 </select>
               </div>
               <div>
@@ -259,7 +287,7 @@ export default function ContactSection() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  placeholder="Example: We're preparing for SOC 2 audit in 3 months and need help with security controls and documentation..."
+                  placeholder="Example: We're building a new web application and need help with system design and security architecture..."
                   className="w-full px-4 py-2 bg-[var(--theme-surface)] border border-[var(--theme-border)] rounded-lg text-[var(--theme-text)] focus:outline-none focus:ring-2 focus:ring-[var(--theme-primary)] resize-none"
                 />
               </div>
@@ -386,7 +414,7 @@ export default function ContactSection() {
                 I&apos;m currently available for:
               </p>
               <ul className="space-y-2">
-                {['Security consulting projects', 'Infrastructure automation', 'Custom tool development', 'Open source collaborations'].map(
+                {['Programming & Development', 'Technical Mentorship', 'Security Consulting', 'Architecture & System Design', 'Compliance & Audits'].map(
                   (item) => (
                     <li key={item} className="flex items-center gap-2 text-[var(--theme-text-secondary)]">
                       <CheckCircle size={16} className="text-[var(--theme-primary)]" />

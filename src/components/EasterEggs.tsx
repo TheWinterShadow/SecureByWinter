@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 export default function EasterEggs() {
   const [konamiCode, setKonamiCode] = useState<string[]>([]);
   const [matrixActive, setMatrixActive] = useState(false);
   const [terminalMode, setTerminalMode] = useState(false);
 
-  const konamiSequence = [
+  const konamiSequence = useMemo(() => [
     'ArrowUp',
     'ArrowUp',
     'ArrowDown',
@@ -18,7 +18,7 @@ export default function EasterEggs() {
     'ArrowRight',
     'KeyB',
     'KeyA',
-  ];
+  ], []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -61,7 +61,7 @@ export default function EasterEggs() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [terminalMode]);
+  }, [terminalMode, konamiSequence]);
 
   useEffect(() => {
     if (terminalMode) {

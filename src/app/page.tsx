@@ -1,10 +1,8 @@
 'use client';
 
-import { lazy, Suspense } from 'react';
-import { motion } from 'framer-motion';
 import Hero from '@/components/Hero';
 import Link from 'next/link';
-import { ArrowRight, Shield, Lock, Settings, AlertTriangle, Bot, RefreshCw, CheckCircle } from 'lucide-react';
+import { ArrowRight, Terminal, GraduationCap, MessageSquare, Shield } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -14,11 +12,7 @@ export default function Home() {
       {/* Problem-Solution Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-16"
+          <div className="mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[var(--theme-text)] mb-12 text-center">
               The Security Gap Most Growing Companies Face
@@ -85,29 +79,24 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Services Preview Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div
             className="mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[var(--theme-text)] mb-4 text-center">
               How I Can Help Your Business
             </h2>
             <p className="text-lg text-[var(--theme-text-secondary)] mb-12 text-center">
-              Clear services. Transparent pricing. Real results.
+              Programming, Mentorship, Consultation, and Security services. Pricing based on scope and negotiable.
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { icon: Shield, emoji: '🔒', title: 'Security Audits & Compliance', desc: 'Comprehensive security assessments for due diligence, SOC 2, or internal reviews. Get a clear roadmap with prioritized fixes.', price: '$12,000 - $35,000' },
-                { icon: Lock, emoji: '🔐', title: 'IAM & Access Control', desc: 'Design and implement scalable authorization systems. From RBAC to fine-grained permissions, done right the first time.', price: '$14,000 - $45,000' },
-                { icon: Settings, emoji: '⚙️', title: 'Security Automation', desc: 'Stop doing manual security reviews. Automated vulnerability scanning, CI/CD security, and continuous monitoring.', price: '$15,000 - $55,000' },
-                { icon: AlertTriangle, emoji: '🚨', title: 'Incident Response', desc: 'Fast response to security incidents. Investigation, containment, remediation, and post-mortem to prevent recurrence.', price: '$6,000 - $18,000' },
-                { icon: Bot, emoji: '🤖', title: 'AI/ML Security', desc: 'Specialized security for AI-powered products. Model security, prompt injection protection, and compliance frameworks.', price: '$18,000 - $60,000' },
-                { icon: RefreshCw, emoji: '🔄', title: 'Security Retainer', desc: 'Ongoing security support without hiring full-time. Priority access, regular reviews, and flexible monthly hours.', price: '$4,500 - $13,500/month' },
+                { icon: Terminal, emoji: '💻', title: 'Programming', desc: 'Web apps, backends, system design, CI/CD, analytics, automation, and cloud migration. Full-stack development services.', category: 'Programming' },
+                { icon: GraduationCap, emoji: '🎓', title: 'Mentorship', desc: 'One-on-one mentorship in programming, security, career development, and technical leadership.', category: 'Mentorship' },
+                { icon: MessageSquare, emoji: '💡', title: 'Technical Consultation', desc: 'Expert technical advice, architecture reviews, and strategic guidance for your technical decisions.', category: 'Consultation' },
+                { icon: Shield, emoji: '🔒', title: 'Security Work', desc: 'Secure design reviews, code reviews, threat modeling, incident response, compliance, and vulnerability analysis.', category: 'Security' },
               ].map((service, index) => {
                 const Icon = service.icon;
                 return (
@@ -123,24 +112,21 @@ export default function Home() {
                     <p className="text-[var(--theme-text-secondary)] mb-4 text-sm">
                       {service.desc}
                     </p>
-                    <div className="text-[var(--theme-primary)] font-semibold mb-3">
-                      {service.price}
+                    <div className="text-xs text-[var(--theme-text-secondary)] mb-3 italic">
+                      Pricing based on scope - negotiable
                     </div>
                     <div className="flex items-center gap-2 text-[var(--theme-primary)] font-medium text-sm">
-                      <span>Learn More</span>
+                      <span>View Services</span>
                       <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </div>
                   </Link>
                 );
               })}
             </div>
-          </motion.div>
+          </div>
 
           {/* Why Work With Me Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div
             className="mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[var(--theme-text)] mb-12 text-center">
@@ -180,13 +166,10 @@ export default function Home() {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Testimonial Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div
             className="mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[var(--theme-text)] mb-12 text-center">
@@ -220,30 +203,23 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Final CTA Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div
             className="text-center bg-[var(--theme-surface)] border border-[var(--theme-primary)] rounded-lg p-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[var(--theme-text)] mb-4">
               Ready to Build a More Secure Business?
             </h2>
             <p className="text-lg text-[var(--theme-text-secondary)] mb-8 max-w-2xl mx-auto">
-              Let&apos;s have an honest 20-minute conversation about your security challenges. No sales pitch—just a practical discussion about where you are and where you need to be.
+              Let&apos;s have an honest 30-minute conversation about your technical challenges. All initial consultations are always free—no sales pitch, just a practical discussion about where you are and where you need to be.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
               <Link href="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-[var(--theme-primary)] text-white rounded-lg font-semibold hover:bg-[var(--theme-secondary)] transition-colors shadow-lg"
-                >
+                <button className="px-8 py-4 bg-[var(--theme-primary)] text-white rounded-lg font-semibold hover:bg-[var(--theme-secondary)] transition-all hover:scale-105 active:scale-95 shadow-lg">
                   Schedule Free Consultation
-                </motion.button>
+                </button>
               </Link>
             </div>
             <div className="flex flex-wrap justify-center gap-4 text-sm text-[var(--theme-text-secondary)]">
@@ -260,7 +236,7 @@ export default function Home() {
                 Download my resume
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>
