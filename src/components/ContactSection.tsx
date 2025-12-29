@@ -31,13 +31,11 @@ export default function ContactSection() {
 
       // Check if EmailJS is configured
       if (serviceId === 'YOUR_SERVICE_ID' || templateId === 'YOUR_TEMPLATE_ID' || publicKey === 'YOUR_PUBLIC_KEY') {
-        console.warn('EmailJS not configured. Using fallback simulation.');
-        // Fallback to simulation if not configured
-        setTimeout(() => {
-          setStatus('success');
-          setFormData({ name: '', email: '', company: '', projectType: '', timeline: '', budgetRange: '', message: '', referral: '' });
-          setTimeout(() => setStatus('idle'), 3000);
-        }, 1000);
+        console.warn('EmailJS not configured. Failing with erorr to email contact@securebywinter.com.');
+        setStatus('error');
+        // Alert the user about the misconfiguration
+        alert('Contact form has misconfiguration. Please contact contact@securebywinter.com directly.');
+        setTimeout(() => setStatus('idle'), 5000);
         return;
       }
 
@@ -47,12 +45,15 @@ export default function ContactSection() {
       const templateParams = {
         name: formData.name,
         email: formData.email,
-        company: formData.company,
-        projectType: formData.projectType,
-        timeline: formData.timeline,
-        budgetRange: formData.budgetRange,
-        message: formData.message,
-        referral: formData.referral,
+        title: `New Contact Form Submission from ${formData.name}`,
+        message: `You have a new contact form submission:Name: ${formData.name}
+Email: ${formData.email}
+Company: ${formData.company}
+Project Type: ${formData.projectType}
+Timeline: ${formData.timeline}
+Budget Range: ${formData.budgetRange}
+Message: ${formData.message}
+Referral: ${formData.referral}`
       };
 
       console.log('Sending email with params:', { serviceId, templateId, templateParams });
@@ -61,13 +62,13 @@ export default function ContactSection() {
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
 
       setStatus('success');
-      setFormData({ 
-        name: '', 
-        email: '', 
+      setFormData({
+        name: '',
+        email: '',
         company: '',
-        projectType: '', 
+        projectType: '',
         timeline: '',
-        budgetRange: '', 
+        budgetRange: '',
         message: '',
         referral: ''
       });
@@ -76,7 +77,7 @@ export default function ContactSection() {
       console.error('EmailJS error:', error);
       console.error('Error status:', error?.status);
       console.error('Error text:', error?.text);
-      
+
       // Provide user-friendly error messages
       let errorMessage = 'Failed to send message. Please try again.';
       if (error?.status === 422) {
@@ -90,7 +91,7 @@ export default function ContactSection() {
       } else if (error?.status === 401) {
         errorMessage = 'EmailJS authentication failed. Please check your public key.';
       }
-      
+
       console.error('Error details:', errorMessage);
       setStatus('error');
       setTimeout(() => setStatus('idle'), 5000);
