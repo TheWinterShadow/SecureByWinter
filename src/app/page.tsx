@@ -169,7 +169,7 @@ export default function Home() {
           </div>
 
           {/* Testimonial Section */}
-          <div
+          {/*<div
             className="mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-[var(--theme-text)] mb-12 text-center">
@@ -203,7 +203,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
+          </div>*/}
 
           {/* Final CTA Section */}
           <div
