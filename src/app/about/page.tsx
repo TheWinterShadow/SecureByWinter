@@ -155,7 +155,7 @@ export default function AboutPage() {
           
           <div className="bg-[var(--theme-surface)] border border-[var(--theme-border)] rounded-lg p-8 mb-6">
             <h3 className="text-xl font-semibold text-[var(--theme-text)] mb-4">
-              Senior Security Engineer | Amazon | 2021 - Present
+              Senior Security Engineer | Amazon | 2021 - 2025
             </h3>
             <ul className="space-y-2 text-[var(--theme-text-secondary)]">
               {[
@@ -165,9 +165,9 @@ export default function AboutPage() {
                 'Architected security posture management tool for 100,000+ applications',
                 'Consulted with 40+ healthcare customers on security architecture',
                 'Led security reviews for high-impact product launches with VPs and CISOs',
-                'Investigated 200+ insider threat incidents with 95% resolution rate',
+                'Investigated 200+ security issues with 95% resolution rate',
                 'Built security analytics data lake processing 10TB+ daily events',
-                'Reduced manual security work by 70% through automation',
+                'Reduced several manual security workflows by 70% through automation',
               ].map((item, idx) => (
                 <li key={idx} className="flex items-start gap-2">
                   <CheckCircle size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
