@@ -223,13 +223,13 @@ export default function AboutPage() {
             <h3 className="text-lg font-semibold text-[var(--theme-text)] mb-4">Technical Expertise</h3>
             <div className="grid md:grid-cols-2 gap-4 text-sm text-[var(--theme-text-secondary)]">
               <div>
-                <strong className="text-[var(--theme-text)]">Cloud & Infrastructure:</strong> AWS (Expert), Azure, Docker, Kubernetes, Terraform
+                <strong className="text-[var(--theme-text)]">Cloud & Infrastructure:</strong> AWS, GVCP, Azure, Docker, Kubernetes, Terraform
               </div>
               <div>
-                <strong className="text-[var(--theme-text)]">Programming:</strong> Python (Expert), Java, JavaScript, C, Bash, SQL
+                <strong className="text-[var(--theme-text)]">Programming:</strong> Python, Java, JavaScript, C, Bash, SQL, Typescript
               </div>
               <div>
-                <strong className="text-[var(--theme-text)]">Security Tools:</strong> Splunk, Elasticsearch, Kibana, EnCase, FTK, Wireshark
+                <strong className="text-[var(--theme-text)]">Security Tools:</strong> Splunk, Elasticsearch, Kibana, EnCase, FTK, Wireshark, Crowdstrike
               </div>
               <div>
                 <strong className="text-[var(--theme-text)]">Specializations:</strong> AI/ML Security, IAM/Access Control, Incident Response, Digital Forensics, Application Security, Cloud Security
