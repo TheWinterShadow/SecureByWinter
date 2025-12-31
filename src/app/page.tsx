@@ -203,7 +203,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div> */}
+          </div>
 
           {/* Final CTA Section */}
           <div
