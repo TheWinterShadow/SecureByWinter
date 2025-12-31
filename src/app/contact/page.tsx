@@ -7,7 +7,7 @@ import { Github, Linkedin, Mail, FileText, ArrowRight } from 'lucide-react';
 
 const socialLinks = [
   { href: 'https://github.com/TheWinterShadow', label: 'GitHub', icon: Github },
-  { href: 'https://www.linkedin.com/in/elijah-winter', label: 'LinkedIn', icon: Linkedin },
+  { href: 'https://www.linkedin.com/in/eliwinter', label: 'LinkedIn', icon: Linkedin },
   { href: 'mailto:contact@securebywinter.com', label: 'Email', icon: Mail },
   { href: 'https://www.elijahwinter.com', label: 'Resume', icon: FileText },
 ];
@@ -77,9 +77,9 @@ export default function ContactPage() {
             <div className="grid md:grid-cols-4 gap-6">
               {[
                 { step: '1', title: 'You Reach Out', desc: 'Fill out the form or email me directly' },
-                { step: '2', title: 'I Respond', desc: 'Within 24 hours to schedule a call' },
+                { step: '2', title: 'I Respond', desc: 'Within 72 hours to schedule a call' },
                 { step: '3', title: 'Discovery Call', desc: '30-minute free consultation (no obligation)' },
-                { step: '4', title: 'Proposal', desc: 'Detailed proposal within 2-3 days if it\'s a fit' },
+                { step: '4', title: 'Proposal', desc: 'Detailed proposal within 3-5 business days if it\'s a fit' },
               ].map((item, index) => (
                 <motion.div
                   key={index}
@@ -133,7 +133,7 @@ export default function ContactPage() {
               })}
             </div>
             <p className="text-center text-sm text-[var(--theme-text-secondary)] mt-4">
-              Response time: I typically respond within 24 hours on weekdays. For urgent security incidents, please indicate &quot;URGENT&quot; in your subject line or message.
+              Response time: I typically respond within 72 hours on weekdays. For urgent security incidents, please indicate &quot;URGENT&quot; in your subject line or message.
             </p>
           </div>
         </motion.div>
@@ -157,7 +157,7 @@ export default function ContactPage() {
                 { text: 'Read My Case Studies', href: '/projects', desc: 'See detailed examples of security projects I\'ve completed and the results achieved.' },
                 { text: 'View All Services', href: '/services', desc: 'Review all service offerings organized by category: Programming, Mentorship, Consultation, and Security.' },
                 { text: 'Download My Resume', href: 'https://www.elijahwinter.com', external: true, desc: 'Get the full background on my experience at Amazon and CIA.' },
-                { text: 'Follow on LinkedIn', href: 'https://www.linkedin.com/in/elijah-winter', external: true, desc: 'I share security insights, tips, and industry thoughts regularly.' },
+                { text: 'Follow on LinkedIn', href: 'https://www.linkedin.com/in/eliwinter', external: true, desc: 'I share security insights, tips, and industry thoughts regularly.' },
                 { text: 'Check Out My GitHub', href: 'https://github.com/TheWinterShadow', external: true, desc: 'See code examples and open-source security tools I\'ve contributed to.' },
               ].map((link, index) => {
                 const LinkComponent = link.external ? 'a' : Link;

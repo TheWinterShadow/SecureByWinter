@@ -10,7 +10,7 @@ const skillCategories = [
     emoji: '🤖',
     title: 'AI & Machine Learning Security',
     opening: 'SPECIALIZED EXPERTISE IN EMERGING SECURITY DOMAIN',
-    openingNote: 'Most security professionals are just now learning about AI security. I built Amazon\'s AI security standards and secured 200+ production AI models.',
+    openingNote: 'Most security professionals are just now learning about AI security. I built Amazon\'s AI security standards and secured many production AI models.',
     whatISecure: [
       'Large Language Models (LLMs) and generative AI systems',
       'Machine learning pipelines and training infrastructure',
@@ -29,7 +29,7 @@ const skillCategories = [
     experience: [
       'Co-founded Amazon\'s AI Security Organization',
       'Created security standards for 500+ AI development teams',
-      'Secured 200+ AI models in production environments',
+      'Secured AI models in production environments',
       'Reduced AI security assessment time by 70% through automation',
       'Advised VPs and CISOs on AI security strategy',
     ],
@@ -50,7 +50,6 @@ const skillCategories = [
     ],
     perfectFor: '"Users in team A can edit documents in projects they\'re assigned to if they have manager role AND the document isn\'t locked AND they\'re in the same region as the document owner..."',
     perfectForNote: 'This is exactly the kind of complex permission logic I specialize in architecting cleanly.',
-    technologies: 'AWS IAM, Azure AD, PostgreSQL, Custom authorization engines, Policy frameworks',
     results: [
       '35% reduction in unauthorized access incidents',
       'Successfully implemented for 50+ development teams at Amazon',
@@ -73,8 +72,8 @@ const skillCategories = [
       'Security metrics and dashboards',
     ],
     techStack: [
-      'Languages: Python (Expert), Bash, JavaScript/Node.js',
-      'Cloud: AWS (Lambda, Step Functions, EventBridge, SQS)',
+      'Languages: Python, Bash, JavaScript/Node.js',
+      'Cloud: AWS, Azure, GCP',
       'Infrastructure as Code: Terraform, Ansible, CloudFormation',
       'Analytics: Elasticsearch, Kibana, Splunk, SQL',
       'Security Tools: Custom-built + integration with commercial tools',
@@ -104,7 +103,7 @@ const skillCategories = [
     ],
     tools: [
       'OWASP Top 10 + OWASP LLM Top 10 (for AI apps)',
-      'Static Analysis: Semgrep, CodeQL, Bandit',
+      'Static Analysis: SonarQube, Fortify, CodeQL, Bandit',
       'Dynamic Analysis: Burp Suite, OWASP ZAP',
       'Manual code review with security focus',
       'Threat modeling (STRIDE, PASTA methodologies)',
@@ -113,7 +112,7 @@ const skillCategories = [
     scale: [
       'Reviewed security posture for 100,000+ applications',
       'Led secure design reviews with VPs and CISOs',
-      'Advised 40+ healthcare companies on secure architecture',
+      'Advised healthcare companies on secure architecture',
       'Conducted security reviews for high-impact product launches',
       'Created security review frameworks reducing assessment time by 15%',
     ],
@@ -135,15 +134,15 @@ const skillCategories = [
     tools: [
       'Digital Forensics: EnCase, FTK, Cellebrite',
       'Network Analysis: Wireshark, tcpdump, Zeek',
-      'Log Analysis: Splunk, ELK Stack, AWS CloudTrail',
+      'Log Analysis: Splunk, Grafana, ELK Stack',
       'Memory Forensics: Volatility',
       'Behavioral Analytics: Custom ML-based detection',
       'Evidence Preservation: Chain of custody procedures',
     ],
     trackRecord: [
-      'Investigated 200+ security incidents at Amazon',
+      'Investigated 200+ security incidents',
       '95% case closure rate within SLA',
-      'Created 12 new insider threat detection rules',
+      'Created new insider threat detection rules',
       'Reduced incident response time by 66% through automation',
       'Built investigation methodology reducing new analyst onboarding by 50%',
       'Experience with incidents ranging from insider threats to external breaches',
@@ -156,16 +155,16 @@ const skillCategories = [
     opening: 'SECURE, SCALABLE CLOUD ARCHITECTURE',
     openingNote: 'Modern applications run in the cloud. I secure them from the ground up—network, compute, data, and identity.',
     platforms: [
-      'AWS (Expert): IAM, VPC, Security Groups, GuardDuty, CloudTrail, KMS, etc.',
-      'Microsoft Azure (Proficient): Azure AD, Security Center, Key Vault',
-      'GCP (Familiar): IAM, Cloud Security Command Center',
-      'Infrastructure as Code: Terraform (Expert), AWS CloudFormation, Ansible',
+      'AWS',
+      'Microsoft Azure',
+      'GCP',
+      'Infrastructure as Code',
     ],
     whatISecure: [
       'Kubernetes clusters and container security',
       'CI/CD pipelines and software supply chain',
       'Data lakes and analytics infrastructure',
-      'Serverless architectures (Lambda, API Gateway)',
+      'Serverless architectures',
       'Network segmentation and zero-trust networking',
       'Secrets management and encryption key lifecycle',
       'Cloud workload protection and runtime security',
@@ -213,9 +212,9 @@ const skillCategories = [
 ];
 
 const technologySummary = {
-  languages: 'Python (Expert) - Security automation, data analysis, scripting\nJavaScript/Node.js (Proficient) - Backend services, Lambda functions\nBash (Expert) - System automation, DevOps\nSQL (Proficient) - Database security, query optimization\nJava (Familiar) - Enterprise application review\nC (Familiar) - Low-level security analysis',
-  cloud: 'AWS (Expert) - Comprehensive security services\nMicrosoft Azure (Proficient)\nGoogle Cloud Platform (Familiar)\nDocker & Kubernetes\nTerraform, Ansible, CloudFormation\nVMware, Proxmox',
-  securityTools: 'SIEM: Splunk, Elasticsearch, Kibana\nForensics: EnCase, FTK, Cellebrite\nNetwork: Wireshark, Zeek, Suricata\nVulnerability: Nessus, OpenVAS, Burp Suite\nCode Analysis: Semgrep, CodeQL, Bandit\nCloud Security: AWS Security Hub, GuardDuty',
+  languages: 'Python - Security automation, data analysis, scripting\nJavaScript/Node.js - Backend services, Lambda functions\nBash - System automation, DevOps\nSQL - Database security, query optimization\nJava - Enterprise application review\nC - Low-level security analysis',
+  cloud: 'AWS - Comprehensive security services\nMicrosoft Azure\nGoogle Cloud Platform\nDocker & Kubernetes\nTerraform, Ansible, CloudFormation\nVMware, Proxmox',
+  securityTools: 'SIEM: Splunk, Elasticsearch, Kibana\nForensics: EnCase, FTK, Cellebrite\nNetwork: Wireshark, Zeek, Suricata\nVulnerability: Nessus, OpenVAS, Burp Suite\nCode Analysis: SonarQube, Fortify, CodeQL, Bandit\nCloud Security: AWS Security Hub, GuardDuty',
   databases: 'PostgreSQL, MySQL\nElasticsearch\nAWS (S3, Athena, Redshift)\nApache Spark\nData pipeline design',
 };
 
@@ -445,17 +444,6 @@ export default function SkillsPage() {
                     </div>
                   )}
 
-                  {category.technologies && (
-                    <div>
-                      <h3 className="text-lg font-semibold text-[var(--theme-text)] mb-3">
-                        Technologies:
-                      </h3>
-                      <p className="text-[var(--theme-text-secondary)]">
-                        {category.technologies}
-                      </p>
-                    </div>
-                  )}
-
                   {category.tools && (
                     <div>
                       <h3 className="text-lg font-semibold text-[var(--theme-text)] mb-3">
@@ -529,22 +517,6 @@ export default function SkillsPage() {
                         {category.trackRecord.map((item, idx) => (
                           <li key={idx} className="flex items-start gap-2">
                             <ArrowRight size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
-                            <span className="text-[var(--theme-text-secondary)]">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {category.whatISecure && category.title === 'Cloud Security & Infrastructure' && (
-                    <div>
-                      <h3 className="text-lg font-semibold text-[var(--theme-text)] mb-3">
-                        Cloud Components I Secure:
-                      </h3>
-                      <ul className="space-y-2">
-                        {category.whatISecure.map((item, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <CheckCircle size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
                             <span className="text-[var(--theme-text-secondary)]">{item}</span>
                           </li>
                         ))}

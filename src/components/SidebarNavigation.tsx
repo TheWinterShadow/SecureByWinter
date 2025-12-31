@@ -15,7 +15,7 @@ const navItems = [
 
 const socialLinks = [
   { href: 'https://github.com/TheWinterShadow', label: 'GitHub', icon: Github, external: true },
-  { href: 'https://www.linkedin.com/in/elijah-winter', label: 'LinkedIn', icon: Linkedin, external: true },
+  { href: 'https://www.linkedin.com/in/eliwinter', label: 'LinkedIn', icon: Linkedin, external: true },
   { href: 'mailto:contact@securebywinter.com', label: 'Email', icon: MailIcon, external: false },
   { href: 'https://www.elijahwinter.com', label: 'Resume', icon: FileText, external: true },
 ];

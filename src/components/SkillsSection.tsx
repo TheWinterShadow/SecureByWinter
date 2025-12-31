@@ -2,8 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { 
-  Code, Cloud, Shield, Database, Settings, Network, 
+import Image from 'next/image';
+import {
+  Code, Cloud, Shield, Database, Settings, Network,
   Lock, Brain, Server, FileCode, Terminal, Box, Sparkles,
   type LucideIcon
 } from 'lucide-react';
@@ -19,7 +20,7 @@ const techLogos: Record<string, string> = {
   'Kubernetes': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/kubernetes.svg',
   'Terraform': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/terraform.svg',
   'Ansible': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/ansible.svg',
-  
+
   // Languages
   'Python': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/python.svg',
   'C': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/c.svg',
@@ -31,7 +32,7 @@ const techLogos: Record<string, string> = {
   'CSS': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/css3.svg',
   'Bash': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gnubash.svg',
   'SQL': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/postgresql.svg',
-  
+
   // Security Tools
   'Splunk': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/splunk.svg',
   'FireEye': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/firefoxbrowser.svg',
@@ -41,14 +42,14 @@ const techLogos: Record<string, string> = {
   'Cellebrite': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/cellebrite.svg',
   'Kibana': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/kibana.svg',
   'Bazel': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/bazel.svg',
-  
+
   // Databases & Analytics
   'Elasticsearch': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/elasticsearch.svg',
   'PostgreSQL': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/postgresql.svg',
   'MongoDB': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mongodb.svg',
   'Spark': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/apachespark.svg',
   'Apache Airflow': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/apacheairflow.svg',
-  
+
   // IAM & Access Control
   'ABAC': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/keycloak.svg',
   'RBAC': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/keycloak.svg',
@@ -56,7 +57,7 @@ const techLogos: Record<string, string> = {
   'Zero Trust Architecture': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/cloudflare.svg',
   'OAuth': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/oauth.svg',
   'SAML': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/saml.svg',
-  
+
   // AI/ML Security
   'LLM Security': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/openai.svg',
   'NLP': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tensorflow.svg',
@@ -64,7 +65,7 @@ const techLogos: Record<string, string> = {
   'Sentiment Analysis': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tensorflow.svg',
   'Model Security': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tensorflow.svg',
   'MCP': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/openai.svg',
-  
+
   // Security Domains
   'Application Security': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/owasp.svg',
   'Cloud Security': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazonaws.svg',
@@ -73,7 +74,7 @@ const techLogos: Record<string, string> = {
   'Incident Response': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/security.svg',
   'Detection Engineering': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/security.svg',
   'AI/ML Security': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tensorflow.svg',
-  
+
   // Networking
   'TCP/IP': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/network.svg',
   'Routing': 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/cisco.svg',
@@ -98,7 +99,7 @@ const techIcons: Record<string, LucideIcon> = {
   'Kubernetes': Settings,
   'Terraform': FileCode,
   'Ansible': Settings,
-  
+
   // Languages
   'Python': Code,
   'C': Code,
@@ -110,7 +111,7 @@ const techIcons: Record<string, LucideIcon> = {
   'CSS': Code,
   'Bash': Terminal,
   'SQL': Database,
-  
+
   // Security Tools
   'Splunk': Shield,
   'FireEye': Shield,
@@ -120,14 +121,14 @@ const techIcons: Record<string, LucideIcon> = {
   'Cellebrite': Shield,
   'Kibana': Database,
   'Bazel': Settings,
-  
+
   // Databases & Analytics
   'Elasticsearch': Database,
   'PostgreSQL': Database,
   'MongoDB': Database,
   'Spark': Database,
   'Apache Airflow': Database,
-  
+
   // IAM & Access Control
   'ABAC': Lock,
   'RBAC': Lock,
@@ -135,7 +136,7 @@ const techIcons: Record<string, LucideIcon> = {
   'Zero Trust Architecture': Shield,
   'OAuth': Lock,
   'SAML': Lock,
-  
+
   // AI/ML Security
   'LLM Security': Brain,
   'NLP': Brain,
@@ -197,12 +198,12 @@ const skillCategories = [
 ];
 
 // Interactive Skill Badge Component
-function SkillBadge({ 
-  tech, 
+function SkillBadge({
+  tech,
   categoryColor,
-  index 
-}: { 
-  tech: string; 
+  index
+}: {
+  tech: string;
   categoryColor: string;
   index: number;
 }) {
@@ -210,7 +211,7 @@ function SkillBadge({
   const [imgError, setImgError] = useState(false);
   const logoUrl = techLogos[tech];
   const IconComponent = techIcons[tech] || Code;
-  
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
@@ -242,7 +243,7 @@ function SkillBadge({
           }}
           className={`absolute inset-0 bg-gradient-to-br ${categoryColor}`}
         />
-        
+
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center gap-2">
           <motion.div
@@ -255,9 +256,11 @@ function SkillBadge({
             style={{ width: '56px', height: '56px' }}
           >
             {logoUrl && !imgError ? (
-              <img
+              <Image
                 src={logoUrl}
                 alt={tech}
+                width={28}
+                height={28}
                 className="w-7 h-7 object-contain"
                 onError={() => setImgError(true)}
               />
@@ -265,7 +268,7 @@ function SkillBadge({
               <IconComponent size={28} className="text-white" />
             )}
           </motion.div>
-          
+
           <motion.span
             animate={{
               color: isHovered ? '#ffffff' : '#f0f0f0',
@@ -275,7 +278,7 @@ function SkillBadge({
             {tech}
           </motion.span>
         </div>
-        
+
         {/* Shine effect on hover */}
         {isHovered && (
           <motion.div
@@ -317,7 +320,7 @@ export default function SkillsSection() {
                 TL;DR - Quick Summary
               </h3>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
                 {
@@ -417,11 +420,10 @@ export default function SkillsSection() {
         >
           <button
             onClick={() => setSelectedCategory(null)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-              selectedCategory === null
-                ? 'bg-[var(--theme-primary)] text-white shadow-lg scale-105'
-                : 'bg-[var(--theme-bg)] text-[var(--theme-text-secondary)] hover:bg-[var(--theme-primary)]/20 hover:text-[var(--theme-text)]'
-            }`}
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCategory === null
+              ? 'bg-[var(--theme-primary)] text-white shadow-lg scale-105'
+              : 'bg-[var(--theme-bg)] text-[var(--theme-text-secondary)] hover:bg-[var(--theme-primary)]/20 hover:text-[var(--theme-text)]'
+              }`}
           >
             All Skills
           </button>
@@ -433,11 +435,10 @@ export default function SkillsSection() {
                 onClick={() => setSelectedCategory(category.name)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  selectedCategory === category.name
-                    ? 'bg-[var(--theme-primary)] text-white shadow-lg'
-                    : 'bg-[var(--theme-bg)] text-[var(--theme-text-secondary)] hover:bg-[var(--theme-primary)]/20 hover:text-[var(--theme-text)]'
-                }`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCategory === category.name
+                  ? 'bg-[var(--theme-primary)] text-white shadow-lg'
+                  : 'bg-[var(--theme-bg)] text-[var(--theme-text-secondary)] hover:bg-[var(--theme-primary)]/20 hover:text-[var(--theme-text)]'
+                  }`}
               >
                 <Icon size={16} />
                 <span>{category.name}</span>
@@ -473,7 +474,7 @@ export default function SkillsSection() {
                       {category.skills.length} skills
                     </span>
                   </div>
-                  
+
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                     {category.skills.map((skill, skillIndex) => (
                       <SkillBadge

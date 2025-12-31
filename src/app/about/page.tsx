@@ -22,7 +22,7 @@ export default function AboutPage() {
               Hi, I&apos;m Elijah Winter.
             </p>
             <p className="text-lg text-[var(--theme-text-secondary)] leading-relaxed">
-              I spent 7+ years building security systems at Amazon and the CIA—the kinds of systems that protect hundreds of millions of users and some of the nation&apos;s most sensitive information.
+              I spent 7+ years securing systems and building security systems at Amazon and the CIA—the kinds of systems that protect hundreds of millions of users and some of the nation&apos;s most sensitive information.
             </p>
             <p className="text-lg text-[var(--theme-text-secondary)] leading-relaxed">
               At Amazon, I co-founded the AI Security Organization and created security frameworks used by 500+ development teams to build safe AI products. I partnered with 50+ engineering teams implementing access control systems, investigated 200+ security incidents, and built automation that reduced manual security work by 70%. Before that, I worked at the CIA on digital forensics, threat detection, and protecting classified networks.
@@ -46,7 +46,7 @@ export default function AboutPage() {
               That&apos;s the gap I fill.
             </p>
             <p className="text-[var(--theme-text-secondary)] leading-relaxed">
-              I take the frameworks, tools, and processes that work at Amazon scale and adapt them for fast-moving teams. You get enterprise-quality security engineering without the enterprise overhead, complexity, or six-month timelines.
+              I take the lessons I learned at Amazon scale and adapt them for fast-moving teams by using a combination of off the shelf tools and custom solutions to keep costs down. You get enterprise-quality security engineering without the enterprise overhead, complexity, or six-month timelines.
             </p>
             <p className="text-[var(--theme-text-secondary)] leading-relaxed">
               I also learned that the best security work happens when you deeply understand a company&apos;s context—their business model, their technical debt, their competitive pressure, their actual risks. As a consultant, I can focus entirely on your problems without the distractions of corporate politics or unrelated priorities.
@@ -66,11 +66,11 @@ export default function AboutPage() {
             {[
               {
                 title: 'Real Enterprise Experience at Scale',
-                body: 'I didn\'t learn security from tutorials or certifications—I built it at Amazon and the CIA. I\'ve secured systems protecting millions of users, investigated actual breaches, and seen every edge case. When you hire consultants who\'ve only worked with 10-20 companies, you get theory. When you hire me, you get battle-tested experience from organizations that operate at a scale most companies will never reach.',
+                body: 'I didn\'t learn security from tutorials or certifications—I built it at Amazon and the CIA. I\'ve secured systems protecting millions of users, investigated actual breaches, and seen many edge cases. When you hire consultants who\'ve only worked with 10-20 companies, you get theory. When you hire me, you get battle-tested experience from organizations that operate at a scale most companies will never reach. I focus my time less on theory and more on what actually works in practice.',
               },
               {
                 title: 'I Understand the Business Context',
-                body: 'At Amazon, I partnered with VPs and CISOs, consulted with 40+ healthcare customers on architecture decisions, and advised leadership on enabling innovation safely. I learned that security isn\'t about saying "no"—it\'s about understanding what you\'re trying to accomplish and finding the secure path to get there. I care about your business outcomes, not just checking security boxes.',
+                body: 'At Amazon and the CIA, I partnered with VPs, CISOs, Directors and Chiefs, consulted with healthcare customers on architecture decisions, and advised leadership on enabling innovation safely. I learned that security isn\'t about saying "no"—it\'s about understanding what you\'re trying to accomplish and finding the secure path to get there. I care about your business outcomes, not just checking security boxes.',
               },
               {
                 title: 'Specialized AI/ML Security Expertise',
@@ -159,11 +159,11 @@ export default function AboutPage() {
             </h3>
             <ul className="space-y-2 text-[var(--theme-text-secondary)]">
               {[
-                'Co-founded Amazon\'s AI Security Organization, defining strategy and organizational structure for team of 15+ security engineers',
-                'Created AI security standards adopted by 500+ development teams across Amazon',
+                'Co-founded Amazon\'s AI Security Organization, defining strategy and organizational structure for team that started at 4 people and now have over 15 engineers',
+                'Created AI security standards and testing frameworks, adopted by 500+ development teams across Amazon',
                 'Partnered with 50+ engineering teams to implement attribute-based and fine-grained access control',
                 'Architected security posture management tool for 100,000+ applications',
-                'Consulted with 40+ healthcare customers on security architecture',
+                'Consulted with healthcare customers and subsidiaries on security architecture',
                 'Led security reviews for high-impact product launches with VPs and CISOs',
                 'Investigated 200+ insider threat incidents with 95% resolution rate',
                 'Built security analytics data lake processing 10TB+ daily events',
@@ -181,55 +181,38 @@ export default function AboutPage() {
             <h3 className="text-xl font-semibold text-[var(--theme-text)] mb-4">
               Central Intelligence Agency | 2018 - 2021
             </h3>
-            <div className="space-y-4">
-              <div>
-                <h4 className="font-semibold text-[var(--theme-text)] mb-2">Cyber Security Advisor (2021)</h4>
-                <ul className="space-y-1 text-[var(--theme-text-secondary)] text-sm">
-                  <li>• Managed cyber security team of 8 analysts</li>
-                  <li>• Conducted security assessments across 15+ enterprise systems</li>
-                  <li>• Advised executive leadership on critical vulnerabilities</li>
-                  <li>• Developed security awareness training for 300+ users</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold text-[var(--theme-text)] mb-2">Cyber Data Specialist (2020-2021)</h4>
-                <ul className="space-y-1 text-[var(--theme-text-secondary)] text-sm">
-                  <li>• Researched 50+ Advanced Persistent Threats (APTs)</li>
-                  <li>• Automated data analytics workflows using Python and Spark</li>
-                  <li>• Led data science projects applying machine learning to security datasets</li>
-                  <li>• Served as Systems Administrator for classified networks</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold text-[var(--theme-text)] mb-2">Digital Forensics Engineer Intern (2018-2020)</h4>
-                <ul className="space-y-1 text-[var(--theme-text-secondary)] text-sm">
-                  <li>• Researched emerging file formats, mobile devices, and storage technologies</li>
-                  <li>• Developed Python scripts for information recovery and threat identification</li>
-                  <li>• Analyzed digital datasets to identify malicious behaviors</li>
-                </ul>
-              </div>
-            </div>
+            <ul className="space-y-2 text-[var(--theme-text-secondary)]">
+              {[
+                'Managed cyber security team of 8 analysts and engineers protecting classified networks',
+                'Conducted security assessments across 15+ enterprise systems',
+                'Advised executive leadership on critical vulnerabilities and mitigation strategies',
+                'Developed security awareness training for 300+ users',
+                'Researched 50+ Advanced Persistent Threats (APTs) and threat actor techniques',
+                'Automated data analytics workflows using serverless and big data technologies',
+                'Led data science projects applying machine learning to security datasets',
+                'Served as Systems Administrator for classified networks',
+                'Developed Python scripts for information recovery and threat identification',
+                'Analyzed digital datasets to identify malicious behaviors'
+              ].map((item, idx) => (
+                <li key={idx} className="flex items-start gap-2">
+                  <CheckCircle size={18} className="text-[var(--theme-primary)] mt-0.5 flex-shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-
-          <div className="bg-[var(--theme-surface)] border border-[var(--theme-border)] rounded-lg p-6">
-            <h3 className="text-lg font-semibold text-[var(--theme-text)] mb-4">Education</h3>
-            <p className="text-[var(--theme-text-secondary)]">
-              <strong>Bachelor of Science in Cyber Security Engineering</strong><br />
-              George Mason University Honors College | 2020
-            </p>
-          </div>
-
+           
           <div className="bg-[var(--theme-surface)] border border-[var(--theme-border)] rounded-lg p-6 mt-6">
             <h3 className="text-lg font-semibold text-[var(--theme-text)] mb-4">Technical Expertise</h3>
             <div className="grid md:grid-cols-2 gap-4 text-sm text-[var(--theme-text-secondary)]">
               <div>
-                <strong className="text-[var(--theme-text)]">Cloud & Infrastructure:</strong> AWS (Expert), Azure, Docker, Kubernetes, Terraform
+                <strong className="text-[var(--theme-text)]">Cloud & Infrastructure:</strong> AWS, GCP, Azure, Docker, Kubernetes, Terraform
               </div>
               <div>
-                <strong className="text-[var(--theme-text)]">Programming:</strong> Python (Expert), Java, JavaScript, C, Bash, SQL
+                <strong className="text-[var(--theme-text)]">Programming:</strong> Python, Java, Kotlin, JavaScript, Typescript, React, NextJS, C, Bash, SQL
               </div>
               <div>
-                <strong className="text-[var(--theme-text)]">Security Tools:</strong> Splunk, Elasticsearch, Kibana, EnCase, FTK, Wireshark
+                <strong className="text-[var(--theme-text)]">Security Tools:</strong> Splunk, Elasticsearch, Kibana, EnCase, FTK, Wireshark, Crowdstrike
               </div>
               <div>
                 <strong className="text-[var(--theme-text)]">Specializations:</strong> AI/ML Security, IAM/Access Control, Incident Response, Digital Forensics, Application Security, Cloud Security

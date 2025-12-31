@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Project } from '@/types/project';
 import { Github, ExternalLink, Star, Users, Download } from 'lucide-react';
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface ProjectCardProps {
   project: Project;
@@ -29,9 +30,11 @@ export default function ProjectCard({ project, onClick }: ProjectCardProps) {
       {/* Thumbnail */}
       {project.media?.thumbnail ? (
         <div className="relative h-48 overflow-hidden">
-          <img
+          <Image
             src={project.media.thumbnail}
             alt={project.title}
+            width={400}
+            height={192}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--theme-surface)] to-transparent" />

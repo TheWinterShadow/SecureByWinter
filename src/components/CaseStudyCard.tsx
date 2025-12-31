@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Project } from '@/types/project';
 import { Github, ExternalLink, CheckCircle, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface CaseStudyCardProps {
   project: Project;
@@ -138,9 +139,11 @@ export default function CaseStudyCard({ project }: CaseStudyCardProps) {
         {/* Thumbnail or Placeholder */}
         {project.media?.thumbnail ? (
           <div className="mb-8 rounded-lg overflow-hidden">
-            <img
+            <Image
               src={project.media.thumbnail}
               alt={project.title}
+              width={800}
+              height={256}
               className="w-full h-64 object-cover"
             />
           </div>

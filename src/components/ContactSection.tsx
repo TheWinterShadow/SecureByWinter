@@ -311,7 +311,7 @@ Referral: ${formData.referral}`
                   <option value="Google search">Google search</option>
                   <option value="LinkedIn">LinkedIn</option>
                   <option value="GitHub">GitHub</option>
-                  <option value="Referral">Referral from: [text input]</option>
+                  <option value="Referral">Referral</option>
                   <option value="Other">Other</option>
                 </select>
               </div>
@@ -340,7 +340,7 @@ Referral: ${formData.referral}`
                 ) : (
                   <>
                     <Send size={20} />
-                    <span>Send Message — I&apos;ll Respond Within 24 Hours</span>
+                    <span>Send Message — I&apos;ll Respond Within 72 Hours</span>
                   </>
                 )}
               </motion.button>
@@ -376,7 +376,7 @@ Referral: ${formData.referral}`
                   </div>
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/elijah-winter"
+                  href="https://www.linkedin.com/in/eliwinter"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 bg-[var(--theme-surface)] rounded-lg hover:bg-[var(--theme-primary)]/10 transition-colors group"

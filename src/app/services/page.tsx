@@ -118,7 +118,7 @@ const serviceCategories = [
         description: 'Designing and building scalable data lakes for storing and processing large volumes of structured and unstructured data.',
         includes: [
           'Data lake architecture design',
-          'Cloud data lake setup (AWS S3, Azure Data Lake, GCP)',
+          'Cloud data lake setup',
           'Data ingestion pipelines',
           'Data catalog and metadata management',
           'Data governance and access controls',
@@ -226,7 +226,7 @@ const serviceCategories = [
         description: 'Level up your security engineering skills. Learn from 7+ years of Amazon and CIA experience.',
         includes: [
           'Application security and secure code review',
-          'Cloud security architecture (AWS focus)',
+          'Cloud security architecture',
           'IAM and access control patterns',
           'Security automation and tooling',
           'Incident response and forensics',
@@ -477,20 +477,6 @@ const serviceCategories = [
         ],
       },
       {
-        icon: Phone,
-        emoji: '📞',
-        title: 'Emergency Security Hotline',
-        description: '24/7 access to security incident response expertise. Dedicated emergency support.',
-        includes: [
-          'Dedicated emergency phone number',
-          '2-hour response SLA for critical incidents',
-          'Unlimited non-emergency consultations',
-          'Monthly security check-ins',
-          'Incident response playbooks',
-          'Post-incident analysis',
-        ],
-      },
-      {
         icon: Users,
         emoji: '👥',
         title: 'Security Training & Workshops',
@@ -636,7 +622,7 @@ const faqs = [
   },
   {
     question: 'Do you work with my tech stack?',
-    answer: 'I specialize in AWS, Python, JavaScript/Node.js, PostgreSQL, and most modern development stacks. I\'m technology-agnostic and comfortable learning what\'s needed. If you\'re using something unusual, let\'s discuss—I\'ve worked with everything from cutting-edge AI frameworks to legacy mainframe systems.',
+    answer: 'I specialize in AWS, Python, JavaScript/Node.js, PostgreSQL, and most modern development stacks. I\'m technology-agnostic and comfortable learning what\'s needed. If you\'re using something unusual, let\'s discuss—I\'ve worked with everything from cutting-edge AI frameworks to legacy mainframe systems and love to learn new systems and custom solutions for my customers\' needs.',
   },
   {
     question: 'Can you start immediately?',
@@ -664,7 +650,7 @@ const faqs = [
   },
   {
     question: 'What happens after the project ends?',
-    answer: 'Every engagement includes a support period (typically 2-4 weeks) for questions and minor adjustments. After that, you own all deliverables and documentation. Many clients convert to retainers for ongoing support.',
+    answer: 'Every engagement includes a support period (typically 2-4 weeks) for questions and minor adjustments. After that, you own all deliverables and documentation. Many clients convert to retainers for ongoing support or run on their own with the documentation I provide.',
   },
   {
     question: 'How do you communicate progress?',
