@@ -56,7 +56,7 @@ const caseStudyData: Record<string, {
     challenge: 'Development teams needed security tools that integrated seamlessly into their workflows without slowing down releases or requiring separate security teams.',
     solution: [
       'Built modular security toolkit (GAIA, DEMETER, HADES, ARTEMIS)',
-      'Integrated directly into CI/CD pipelines',
+      'Integrated directly into automated deployment pipelines',
       'Automated security scanning and reporting',
       'Provided developer-friendly interfaces',
     ],
@@ -72,7 +72,7 @@ const caseStudyData: Record<string, {
   'the-deployment-forge': {
     challenge: 'A startup was experiencing frequent deployment failures and downtime due to manual, error-prone deployment processes. Each release took 2+ hours and often required rollbacks.',
     solution: [
-      'Automated CI/CD pipeline with GitHub Actions',
+      'Automated deployment pipeline with GitHub Actions',
       'Infrastructure as Code with Terraform',
       'Automated testing and deployment validation',
       'Built-in rollback capabilities',

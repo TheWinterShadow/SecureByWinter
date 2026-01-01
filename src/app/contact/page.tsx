@@ -41,7 +41,7 @@ export default function ContactPage() {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
             {[
-              { emoji: '💻', label: 'Programming Services', desc: 'Web apps, backends, system design, CI/CD, analytics, automation, data lakes, cloud migration' },
+              { emoji: '💻', label: 'Programming Services', desc: 'Web apps, backends, system design, analytics, automation, data lakes, cloud migration' },
               { emoji: '🎓', label: 'Mentorship', desc: 'One-on-one mentorship in programming, security, career development, or technical leadership' },
               { emoji: '💡', label: 'Technical Consultation', desc: 'Expert technical advice, architecture reviews, or strategic guidance for your decisions' },
               { emoji: '🔒', label: 'Security Work', desc: 'Secure design reviews, code reviews, threat modeling, incident response, compliance, vulnerability analysis' },

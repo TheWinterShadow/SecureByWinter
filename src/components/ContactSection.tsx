@@ -195,7 +195,6 @@ Referral: ${formData.referral}`
                     <option value="Web Application Development">Web Application Development</option>
                     <option value="Backend Development">Backend Development</option>
                     <option value="System Design">System Design</option>
-                    <option value="CI/CD & DevOps Setup">CI/CD & DevOps Setup</option>
                     <option value="Analytics Platform Development">Analytics Platform Development</option>
                     <option value="Data ETL / Data Lake Building">Data ETL / Data Lake Building</option>
                     <option value="Automation">Automation</option>

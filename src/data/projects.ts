@@ -20,7 +20,7 @@ import { ProjectType, Project } from '@/types/project';
  * - Security: IAM scanners, security tools, vulnerability assessment
  * - Data Engineering: ETL pipelines, data processing, analytics
  * - Web Development: Frontend applications, frameworks, user interfaces
- * - Infrastructure: DevOps, automation, deployment tools
+ * - Infrastructure: Automation, deployment tools, infrastructure as code
  * - Research: Experimental projects, proof of concepts, studies
  * - Design: UI/UX, graphics, visual design work
  * 
@@ -84,7 +84,7 @@ export const projects: Project[] = [
     type: 'Open Source',
     description: 'Modular security toolkit integrating directly into developer workflows with GAIA (orchestration), DEMETER (infrastructure scanning), HADES (endpoint security), and ARTEMIS (static analysis).',
     longDescription: 'HorizonSec is an open-source security organization focused on building modular security tools that integrate seamlessly into developer workflows. The project includes multiple specialized tools: GAIA for security orchestration, DEMETER for infrastructure scanning, HADES for endpoint security monitoring, and ARTEMIS for static code analysis. Together, these tools provide comprehensive security coverage throughout the development lifecycle.',
-    techStack: ['Python', 'TypeScript', 'Security Tools', 'CI/CD Integration'],
+    techStack: ['Python', 'TypeScript', 'Security Tools', 'Deployment Integration'],
     features: [
       'Modular security toolkit architecture',
       'Developer workflow integration',
@@ -125,7 +125,7 @@ export const projects: Project[] = [
     domain: 'Infrastructure',
     type: 'Open Source',
     description: 'Infrastructure automation and deployment tooling for modern cloud environments.',
-    techStack: ['Python', 'Infrastructure as Code', 'CI/CD'],
+    techStack: ['Python', 'Infrastructure as Code', 'Deployment Automation'],
     links: {
       github: 'https://github.com/TheWinterShadow/The-Deployment-Forge',
     },

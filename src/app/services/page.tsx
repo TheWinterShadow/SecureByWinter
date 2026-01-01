@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Shield, Lock, Settings, AlertTriangle, Bot, RefreshCw, CheckCircle, ArrowRight, HelpCircle, Lightbulb, GraduationCap, Search, Code, Building2, Users, Briefcase, Phone, Terminal, MessageSquare, Database, Cloud, GitBranch, BarChart, Zap, FileCode, Server, Layout, ChevronDown, ChevronUp, Menu } from 'lucide-react';
+import { Shield, Lock, Settings, AlertTriangle, Bot, RefreshCw, CheckCircle, ArrowRight, HelpCircle, Lightbulb, GraduationCap, Search, Code, Building2, Users, Briefcase, Phone, Terminal, MessageSquare, Database, Cloud, BarChart, Zap, FileCode, Server, Layout, ChevronDown, ChevronUp, Menu } from 'lucide-react';
 
 // Service Categories
 const serviceCategories = [
@@ -12,7 +12,7 @@ const serviceCategories = [
     title: 'Programming',
     icon: Terminal,
     emoji: '💻',
-    description: 'Full-stack development, system design, DevOps, analytics, and automation services.',
+    description: 'Full-stack development, system design, analytics, and automation services.',
     services: [
       {
         icon: Code,
@@ -54,20 +54,6 @@ const serviceCategories = [
           'Database and storage design',
           'API design and integration patterns',
           'Documentation and diagrams',
-        ],
-      },
-      {
-        icon: GitBranch,
-        emoji: '🔄',
-        title: 'CI/CD & DevOps Setup',
-        description: 'Building continuous integration and deployment pipelines. Infrastructure as code, automation, and DevOps best practices.',
-        includes: [
-          'CI/CD pipeline setup (GitHub Actions, GitLab CI, Jenkins)',
-          'Infrastructure as Code (Terraform, CloudFormation)',
-          'Container orchestration (Docker, Kubernetes)',
-          'Automated testing integration',
-          'Deployment automation',
-          'Monitoring and logging setup',
         ],
       },
       {
@@ -186,7 +172,7 @@ const serviceCategories = [
         icon: Cloud,
         emoji: '☁️',
         title: 'Cloud Migration & Planning',
-        description: 'Planning and executing cloud migrations. Moving to AWS, Azure, GCP, or multi-cloud architectures.',
+        description: 'Cloud infrastructure strategy and migration planning. Help your team move to AWS, Azure, or GCP with a focus on security and scalability.',
         includes: [
           'Cloud strategy and planning',
           'Migration roadmap development',
@@ -353,7 +339,7 @@ const serviceCategories = [
         icon: Code,
         emoji: '📝',
         title: 'Secure Code Review',
-        description: 'Focused security review of your codebase. Identify vulnerabilities before deployment.',
+        description: 'Security-focused code review and vulnerability assessment for enterprise applications.',
         includes: [
           'Deep-dive review of specified code sections',
           'Vulnerability identification and severity ratings',
@@ -466,10 +452,10 @@ const serviceCategories = [
         icon: Settings,
         emoji: '⚙️',
         title: 'Security Automation',
-        description: 'Automate security processes. CI/CD security integration, vulnerability scanning, and continuous monitoring.',
+        description: 'Automate security processes. Security monitoring and alerting automation, vulnerability scanning, and continuous monitoring.',
         includes: [
           'Automated vulnerability scanning',
-          'CI/CD security integration',
+          'Security monitoring and alerting automation',
           'Security metrics and dashboards',
           'Custom security tooling',
           'Alert and notification automation',
@@ -820,6 +806,20 @@ export default function ServicesPage() {
             </motion.div>
           );
         })}
+
+        {/* Disclaimer Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-8"
+        >
+          <div className="bg-[var(--theme-surface)] border border-[var(--theme-border)] rounded-lg p-6 mb-8">
+            <p className="text-sm text-[var(--theme-text-secondary)]">
+              <strong className="text-[var(--theme-text)]">Note:</strong> All services are provided as consulting to end-user companies and organizations. I do not provide services to companies that directly compete with my current or former employers.
+            </p>
+          </div>
+        </motion.div>
 
         {/* Custom Projects Section */}
         <motion.div

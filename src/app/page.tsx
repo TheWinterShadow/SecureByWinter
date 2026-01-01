@@ -93,7 +93,7 @@ export default function Home() {
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { icon: Terminal, emoji: '💻', title: 'Programming', desc: 'Web apps, backends, system design, CI/CD, analytics, automation, and cloud migration. Full-stack development services.', category: 'Programming' },
+                { icon: Terminal, emoji: '💻', title: 'Programming', desc: 'Web apps, backends, system design, analytics, automation, and cloud migration. Full-stack development services.', category: 'Programming' },
                 { icon: GraduationCap, emoji: '🎓', title: 'Mentorship', desc: 'One-on-one mentorship in programming, security, career development, and technical leadership.', category: 'Mentorship' },
                 { icon: MessageSquare, emoji: '💡', title: 'Technical Consultation', desc: 'Expert technical advice, architecture reviews, and strategic guidance for your technical decisions.', category: 'Consultation' },
                 { icon: Shield, emoji: '🔒', title: 'Security Work', desc: 'Secure design reviews, code reviews, threat modeling, incident response, compliance, and vulnerability analysis.', category: 'Security' },

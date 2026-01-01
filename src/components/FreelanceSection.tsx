@@ -12,7 +12,7 @@ const services = [
   {
     icon: 'Zap',
     title: 'Infrastructure Automation',
-    description: 'CI/CD pipeline setup, infrastructure as code, and deployment automation to streamline your workflows.',
+    description: 'Infrastructure as code, deployment automation, and workflow optimization to streamline your operations.',
   },
   {
     icon: 'Code',

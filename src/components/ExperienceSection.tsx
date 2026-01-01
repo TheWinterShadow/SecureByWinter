@@ -24,7 +24,7 @@ const experiences: Experience[] = [
       'Develop automated security scanning and policy validation tools',
       'Collaborate with development teams to integrate security best practices',
     ],
-    technologies: ['AWS', 'Python', 'Security Tools', 'CI/CD'],
+    technologies: ['AWS', 'Python', 'Security Tools', 'Deployment Automation'],
   },
   {
     title: 'Developer / IT Specialist',

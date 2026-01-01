@@ -107,7 +107,7 @@ const skillCategories = [
       'Dynamic Analysis: Burp Suite, OWASP ZAP',
       'Manual code review with security focus',
       'Threat modeling (STRIDE, PASTA methodologies)',
-      'Security testing in CI/CD pipelines',
+      'Security testing in automated deployment pipelines',
     ],
     scale: [
       'Reviewed security posture for 100,000+ applications',
@@ -162,7 +162,7 @@ const skillCategories = [
     ],
     whatISecure: [
       'Kubernetes clusters and container security',
-      'CI/CD pipelines and software supply chain',
+      'Deployment pipelines and software supply chain',
       'Data lakes and analytics infrastructure',
       'Serverless architectures',
       'Network segmentation and zero-trust networking',
@@ -212,7 +212,7 @@ const skillCategories = [
 ];
 
 const technologySummary = {
-  languages: 'Python - Security automation, data analysis, scripting\nJavaScript/Node.js - Backend services, Lambda functions\nBash - System automation, DevOps\nSQL - Database security, query optimization\nJava - Enterprise application review\nC - Low-level security analysis',
+  languages: 'Python - Security automation, data analysis, scripting\nJavaScript/Node.js - Backend services, Lambda functions\nBash - System automation, infrastructure scripting\nSQL - Database security, query optimization\nJava - Enterprise application review\nC - Low-level security analysis',
   cloud: 'AWS - Comprehensive security services\nMicrosoft Azure\nGoogle Cloud Platform\nDocker & Kubernetes\nTerraform, Ansible, CloudFormation\nVMware, Proxmox',
   securityTools: 'SIEM: Splunk, Elasticsearch, Kibana\nForensics: EnCase, FTK, Cellebrite\nNetwork: Wireshark, Zeek, Suricata\nVulnerability: Nessus, OpenVAS, Burp Suite\nCode Analysis: SonarQube, Fortify, CodeQL, Bandit\nCloud Security: AWS Security Hub, GuardDuty',
   databases: 'PostgreSQL, MySQL\nElasticsearch\nAWS (S3, Athena, Redshift)\nApache Spark\nData pipeline design',
