@@ -27,7 +27,7 @@ jest.mock('lucide-react', () => ({
 describe('Footer Component', () => {
   test('renders footer with all main sections', () => {
     render(<Footer />);
-    
+
     expect(screen.getByText('The Winter Shadow')).toBeInTheDocument();
     expect(screen.getByText(/Security Engineer | Developer | IT Specialist/)).toBeInTheDocument();
     expect(screen.getByText(/Quick Links/)).toBeInTheDocument();
@@ -45,9 +45,9 @@ describe('Footer Component', () => {
 
   test('renders all quick navigation links', () => {
     render(<Footer />);
-    
+
     const expectedNavItems = ['Home', 'About', 'Experience', 'Projects', 'Achievements', 'Contact'];
-    
+
     expectedNavItems.forEach(item => {
       expect(screen.getByText(item)).toBeInTheDocument();
     });
@@ -55,7 +55,7 @@ describe('Footer Component', () => {
 
   test('navigation links have correct href attributes', () => {
     render(<Footer />);
-    
+
     expect(screen.getByText('Home').closest('a')).toHaveAttribute('href', '#home');
     expect(screen.getByText('About').closest('a')).toHaveAttribute('href', '#about');
     expect(screen.getByText('Experience').closest('a')).toHaveAttribute('href', '#experience');
@@ -66,28 +66,28 @@ describe('Footer Component', () => {
 
   test('social media links have correct URLs and attributes', () => {
     render(<Footer />);
-    
+
     const githubLink = screen.getByText('GitHub').closest('a');
     expect(githubLink).toHaveAttribute('href', 'https://github.com/TheWinterShadow');
     expect(githubLink).toHaveAttribute('target', '_blank');
     expect(githubLink).toHaveAttribute('rel', 'noopener noreferrer');
-    
+
     const linkedinLink = screen.getByText('LinkedIn').closest('a');
-    expect(linkedinLink).toHaveAttribute('href', 'https://www.linkedin.com/in/elijah-winter');
+    expect(linkedinLink).toHaveAttribute('href', 'https://www.linkedin.com/in/eliwinter');
     expect(linkedinLink).toHaveAttribute('target', '_blank');
-    
+
     const emailLink = screen.getByText('contact@securebywinter.com').closest('a');
     expect(emailLink).toHaveAttribute('href', 'mailto:contact@securebywinter.com');
   });
 
   test('external links open in new tab', () => {
     render(<Footer />);
-    
+
     const externalLinks = [
       screen.getByText('GitHub').closest('a'),
       screen.getByText('LinkedIn').closest('a')
     ];
-    
+
     externalLinks.forEach(link => {
       expect(link).toHaveAttribute('target', '_blank');
       expect(link).toHaveAttribute('rel', 'noopener noreferrer');
@@ -96,7 +96,7 @@ describe('Footer Component', () => {
 
   test('renders correct icons for each social platform', () => {
     render(<Footer />);
-    
+
     expect(screen.getByTestId('github-icon')).toBeInTheDocument();
     expect(screen.getByTestId('linkedin-icon')).toBeInTheDocument();
     expect(screen.getByTestId('mail-icon')).toBeInTheDocument();
@@ -105,14 +105,14 @@ describe('Footer Component', () => {
 
   test('displays correct copyright information', () => {
     render(<Footer />);
-    
+
     const currentYear = new Date().getFullYear();
     expect(screen.getByText(new RegExp(`© ${currentYear} The Winter Shadow`))).toBeInTheDocument();
   });
 
   test('social links have proper ARIA labels', () => {
     render(<Footer />);
-    
+
     expect(screen.getByText('GitHub')).toBeInTheDocument();
     expect(screen.getByText('LinkedIn')).toBeInTheDocument();
     expect(screen.getByText('contact@securebywinter.com')).toBeInTheDocument();
@@ -121,9 +121,9 @@ describe('Footer Component', () => {
   test('navigation links are clickable', async () => {
     const user = userEvent.setup();
     render(<Footer />);
-    
+
     const homeLink = screen.getByText('Home');
-    
+
     await expect(user.click(homeLink)).resolves.not.toThrow();
   });
 });

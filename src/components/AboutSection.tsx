@@ -39,7 +39,7 @@ export default function AboutSection() {
                 <span>GitHub</span>
               </a>
               <a
-                href="https://www.linkedin.com/in/elijah-winter"
+                href="https://www.linkedin.com/in/eliwinter"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 bg-[var(--theme-primary)]/20 text-[var(--theme-primary)] rounded-lg hover:bg-[var(--theme-primary)]/30 transition-colors"

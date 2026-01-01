@@ -14,7 +14,7 @@ export default function Footer() {
     },
     {
       name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/elijah-winter',
+      url: 'https://www.linkedin.com/in/eliwinter',
       icon: Linkedin,
     },
     {
