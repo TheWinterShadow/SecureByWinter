@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useTheme } from './ThemeProvider';
 
 const navItems = [
@@ -51,8 +52,9 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           <Link
             href="/"
-            className="text-xl font-bold text-[var(--theme-primary)] hover:text-[var(--theme-accent)] transition-colors"
+            className="flex items-center gap-2 text-xl font-bold text-[var(--theme-primary)] hover:text-[var(--theme-accent)] transition-colors"
           >
+            <Image src="/logo.png" alt="Secure By Winter" width={36} height={36} className="rounded-sm" />
             The Winter Shadow
           </Link>
 

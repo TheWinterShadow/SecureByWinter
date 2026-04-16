@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Home, FolderKanban, Mail, Github, Linkedin, FileText, Mail as MailIcon } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useTheme } from './ThemeProvider';
 
@@ -86,8 +87,9 @@ export default function SidebarNavigation() {
               <Link
                 href="/"
                 onClick={handleLinkClick}
-                className="text-2xl font-bold text-[var(--theme-primary)] hover:text-[var(--theme-accent)] transition-colors"
+                className="flex items-center gap-3 text-2xl font-bold text-[var(--theme-primary)] hover:text-[var(--theme-accent)] transition-colors"
               >
+                <Image src="/logo.png" alt="Secure By Winter" width={40} height={40} className="rounded-sm" />
                 The Winter Shadow
               </Link>
               <p className="text-sm text-[var(--theme-text-secondary)] mt-1">

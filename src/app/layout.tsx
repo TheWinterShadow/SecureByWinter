@@ -20,6 +20,11 @@ export const metadata: Metadata = {
     title: 'Enterprise-Grade Security Engineering for Growing Companies',
     description: 'Former Amazon & CIA security leader bringing battle-tested frameworks to companies that need them most.',
     type: 'website',
+    images: [{ url: '/logo.png', width: 512, height: 512, alt: 'Secure By Winter' }],
+  },
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
   },
 };
 
